@@ -1,4 +1,4 @@
-package main
+package function
 
 import (
 	"bytes"
@@ -111,17 +111,15 @@ func main() {
 	media, _ := api.UploadMedia(encodeString)
 
 	// tweet
-	if true {
-		v := url.Values{}
-		v.Add("media_ids", media.MediaIDString)
+	v := url.Values{}
+	v.Add("media_ids", media.MediaIDString)
 
-		tweet, err := api.PostTweet(text, v)
+	tweet, err := api.PostTweet(text, v)
 
-		if err != nil {
-			log.Fatalln(err)
-		}
-
-		log.Println(tweet.Text)
+	if err != nil {
+		log.Fatalln(err)
 	}
+
+	log.Println(tweet.Text)
 
 }
