@@ -113,8 +113,9 @@ func main() {
 	// tweet
 	v := url.Values{}
 	v.Add("media_ids", media.MediaIDString)
+	tweetText := fmt.Sprintf("%s\n#内藤るな #高井千帆 #平瀬美里\n#ELRFES", text)
 
-	tweet, err := api.PostTweet(text, v)
+	tweet, err := api.PostTweet(tweetText, v)
 
 	if err != nil {
 		log.Fatalln(err)
