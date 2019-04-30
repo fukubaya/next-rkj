@@ -43,6 +43,41 @@ func getNow() time.Time {
 	return time.Now().In(jst)
 }
 
+func daysUntil(from time.Time, to time.Time) int {
+	duration := to.Sub(from)
+	return (int(duration.Hours()) / 24) + 1
+}
+
+func loadImg(imgPath string) image.Image {
+	f, _ := os.Open(imgPath)
+	defer f.Close()
+
+	img, _, err := image.Decode(f)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return img
+}
+
+func loadFont(ttfPath string) *truetype.Font {
+	ttf, err := ioutil.ReadFile(ttfPath)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	ft, err := truetype.Parse(ttf)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return ft
+}
+
+func encodePng(img image.Image) string {
+	var buff bytes.Buffer
+	png.Encode(&buff, img)
+	return base64.StdEncoding.EncodeToString(buff.Bytes())
+}
+
 // getTwitterApi creates api client
 func getTwitterAPI() *anaconda.TwitterApi {
 	return anaconda.NewTwitterApiWithCredentials(
@@ -59,35 +94,17 @@ func Tweet(ctx context.Context, m PubSubMessage) error {
 }
 
 func main() {
-	api := getTwitterAPI()
 
-	target := getTargetDate()
-	now := getNow()
-	duration := target.Sub(now)
-	days := (int(duration.Hours()) / 24) + 1
+	days := daysUntil(getNow(), getTargetDate())
 	text := fmt.Sprintf("あと %d 日", days)
 
 	// load image
-	f, _ := os.Open("img/next-rkj.jpg")
-	defer f.Close()
-
-	img, _, err := image.Decode(f)
-	if err != nil {
-		log.Fatalln(err)
-	}
+	img := loadImg("img/next-rkj.jpg")
 	out := image.NewRGBA(img.Bounds())
 	draw.Draw(out, out.Bounds(), img, image.Point{0, 0}, draw.Over)
 
 	// load font
-	ttf, err := ioutil.ReadFile("font/mplus-1p-bold.ttf")
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	ft, err := truetype.Parse(ttf)
-	if err != nil {
-		log.Fatalln(err)
-	}
+	ft := loadFont("font/mplus-1p-bold.ttf")
 	opt := truetype.Options{
 		Size: fontsize,
 	}
@@ -103,11 +120,10 @@ func main() {
 	dr.DrawString(text)
 
 	// encode image to base64
-	var buff bytes.Buffer
-	png.Encode(&buff, out)
-	encodeString := base64.StdEncoding.EncodeToString(buff.Bytes())
+	encodeString := encodePng(out)
 
 	// upload media
+	api := getTwitterAPI()
 	media, _ := api.UploadMedia(encodeString)
 
 	// tweet
