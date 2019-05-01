@@ -44,8 +44,11 @@ func getNow() time.Time {
 }
 
 func daysUntil(from time.Time, to time.Time) int {
-	duration := to.Sub(from)
-	return (int(duration.Hours()) / 24) + 1
+	if from.After(to) {
+		return 0
+	}
+	h := int(to.Sub(from).Hours())
+	return (h / 24) + 1
 }
 
 func loadImg(imgPath string) image.Image {
@@ -87,19 +90,9 @@ func getTwitterAPI() *anaconda.TwitterApi {
 		os.Getenv("CONSUMER_SECRET"))
 }
 
-// Tweet daily comment
-func Tweet(ctx context.Context, m PubSubMessage) error {
-	main()
-	return nil
-}
-
-func main() {
-
-	days := daysUntil(getNow(), getTargetDate())
-	text := fmt.Sprintf("あと %d 日", days)
-
+func generateTodayImage(baseImgPath string, text string) image.Image {
 	// load image
-	img := loadImg("img/next-rkj.jpg")
+	img := loadImg(baseImgPath)
 	out := image.NewRGBA(img.Bounds())
 	draw.Draw(out, out.Bounds(), img, image.Point{0, 0}, draw.Over)
 
@@ -118,6 +111,22 @@ func main() {
 	dr.Dot.X = (fixed.I(out.Bounds().Dx()) - dr.MeasureString(text)) / 2
 	dr.Dot.Y = fixed.I(out.Bounds().Dy() - int(fontsize/2))
 	dr.DrawString(text)
+	return out
+}
+
+// Tweet daily comment
+func Tweet(ctx context.Context, m PubSubMessage) error {
+	main()
+	return nil
+}
+
+func main() {
+
+	days := daysUntil(getNow(), getTargetDate())
+	text := fmt.Sprintf("あと %d 日", days)
+
+	// create image
+	out := generateTodayImage("img/next-rkj-16-9.jpg", text)
 
 	// encode image to base64
 	encodeString := encodePng(out)

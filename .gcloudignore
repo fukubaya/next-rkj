@@ -3,3 +3,5 @@
 .env.yaml
 next-rkj
 .DS_Store
+*_test.go
+deploy.sh
