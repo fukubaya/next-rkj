@@ -5,3 +5,5 @@ next-rkj
 .DS_Store
 *_test.go
 deploy.sh
+output*.png
+img_org/**

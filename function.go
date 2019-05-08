@@ -3,7 +3,9 @@ package function
 import (
 	"bytes"
 	"context"
+	crand "crypto/rand"
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"image"
 	"image/color"
@@ -13,6 +15,9 @@ import (
 	_ "image/png"
 	"io/ioutil"
 	"log"
+	"math"
+	"math/big"
+	"math/rand"
 	"net/url"
 	"os"
 	"time"
@@ -24,13 +29,56 @@ import (
 )
 
 const (
-	location = "Asia/Tokyo"
-	fontsize = 75
+	location     = "Asia/Tokyo"
+	fontFilePath = "font/mplus-1p-bold.ttf"
+	fontsize     = 75
 )
+
+var (
+	imageList []ImageInfo
+	fontData  *truetype.Font
+)
+
+// Point struct
+type Point struct {
+	X int `json:"x"`
+	Y int `json:"y"`
+}
+
+// ImageInfo struct
+type ImageInfo struct {
+	Path        string `json:"path"`
+	TopLeft     Point  `json:"topLeft"`
+	TopRight    Point  `json:"topRight"`
+	BottomLeft  Point  `json:"bottomLeft"`
+	BottomRight Point  `json:"bottomRight"`
+}
 
 // PubSubMessage struct
 type PubSubMessage struct {
 	Data []byte `json:"data"`
+}
+
+func init() {
+	loadImageList()
+	fontData = loadFont(fontFilePath)
+
+	// random seed
+	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64))
+	rand.Seed(seed.Int64())
+}
+
+func loadImageList() {
+	f, _ := os.Open("image.json")
+	defer f.Close()
+
+	dec := json.NewDecoder(f)
+	dec.Decode(&imageList)
+	fmt.Printf("%+v\n", imageList)
+}
+
+func selectRandomImage() ImageInfo {
+	return imageList[rand.Intn(len(imageList))]
 }
 
 func getTargetDate() time.Time {
@@ -90,28 +138,44 @@ func getTwitterAPI() *anaconda.TwitterApi {
 		os.Getenv("CONSUMER_SECRET"))
 }
 
-func generateTodayImage(baseImgPath string, text string) image.Image {
+func generateTodayImage(imgInfo ImageInfo, text string) image.Image {
 	// load image
-	img := loadImg(baseImgPath)
+	img := loadImg(imgInfo.Path)
 	out := image.NewRGBA(img.Bounds())
 	draw.Draw(out, out.Bounds(), img, image.Point{0, 0}, draw.Over)
 
-	// load font
-	ft := loadFont("font/mplus-1p-bold.ttf")
+	// draw
 	opt := truetype.Options{
-		Size: fontsize,
+		Size: float64(calcFontSize(imgInfo, text)),
 	}
-	face := truetype.NewFace(ft, &opt)
+	face := truetype.NewFace(fontData, &opt)
 	dr := &font.Drawer{
 		Dst:  out,
 		Src:  image.NewUniform(color.RGBA{215, 46, 42, 255}),
 		Face: face,
 		Dot:  fixed.Point26_6{},
 	}
-	dr.Dot.X = (fixed.I(out.Bounds().Dx()) - dr.MeasureString(text)) / 2
-	dr.Dot.Y = fixed.I(out.Bounds().Dy() - int(fontsize/2))
+	dr.Dot.X = fixed.I((imgInfo.BottomRight.X+imgInfo.BottomLeft.X)/2) - dr.MeasureString(text)/2
+	dr.Dot.Y = fixed.I((imgInfo.BottomLeft.Y+imgInfo.TopLeft.Y)/2 + int(fontsize/2))
 	dr.DrawString(text)
 	return out
+}
+
+func calcFontSize(imgInfo ImageInfo, text string) int {
+	var width = imgInfo.TopRight.X - imgInfo.TopLeft.X
+	var height = imgInfo.BottomLeft.Y - imgInfo.TopLeft.Y
+
+	for i := 0; i < 200; i += 5 {
+		if i > height {
+			return i - 5
+		}
+		face := truetype.NewFace(fontData, &truetype.Options{Size: float64(i)})
+		textWidth := font.MeasureString(face, text)
+		if i > height || textWidth > fixed.I(width) {
+			return i - 5
+		}
+	}
+	return 200
 }
 
 // Tweet daily comment
@@ -126,7 +190,7 @@ func main() {
 	text := fmt.Sprintf("あと %d 日", days)
 
 	// create image
-	out := generateTodayImage("img/next-rkj-16-9.jpg", text)
+	out := generateTodayImage(selectRandomImage(), text)
 
 	// encode image to base64
 	encodeString := encodePng(out)

@@ -1,2 +1,4 @@
 .env.yaml
 .DS_Store
+img_org/
+output*.png

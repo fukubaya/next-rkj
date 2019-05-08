@@ -1,6 +1,7 @@
 package function
 
 import (
+	"fmt"
 	"image/png"
 	_ "image/png"
 	"os"
@@ -32,10 +33,20 @@ func TestDays2(t *testing.T) {
 }
 
 func TestGenerateImage(t *testing.T) {
-	out := generateTodayImage("img/next-rkj-16-9.jpg", "あと 10 日")
-	f, err := os.Create("./output.png")
-	if err != nil {
-		t.Errorf("failed to save file")
+	for i, imgInfo := range imageList {
+		t.Logf("%+v", imgInfo)
+		out := generateTodayImage(imgInfo, "あと 10 日")
+		f, err := os.Create(fmt.Sprintf("./output%02d.png", i))
+		if err != nil {
+			t.Errorf("failed to save file")
+		}
+		png.Encode(f, out)
 	}
-	png.Encode(f, out)
+}
+
+func TestSelectRandomImage(t *testing.T) {
+	for i := 0; i < 10; i++ {
+		img := selectRandomImage()
+		t.Logf("%+v", img)
+	}
 }
