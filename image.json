@@ -1,5 +1,26 @@
 [
   {
+    "path": "img/chiho-0009.jpg",
+    "topLeft": {"x": 368, "y": 406},
+    "topRight": {"x": 700, "y": 406},
+    "bottomLeft": {"x": 368, "y": 568},
+    "bottomRight": {"x": 700, "y": 568}
+  },
+  {
+    "path": "img/luna-0010.jpg",
+    "topLeft": {"x": 252, "y": 115},
+    "topRight": {"x": 609, "y": 115},
+    "bottomLeft": {"x": 252, "y": 707},
+    "bottomRight": {"x": 609, "y": 707}
+  },
+  {
+    "path": "img/misato-0011.jpg",
+    "topLeft": {"x": 401, "y": 548},
+    "topRight": {"x": 969, "y": 548},
+    "bottomLeft": {"x": 401, "y": 951},
+    "bottomRight": {"x": 969, "y": 951}
+  },
+  {
     "path": "img/chiho-0015.jpg",
     "topLeft": {"x": 258, "y": 152},
     "topRight": {"x": 543, "y": 152},
