@@ -1,5 +1,19 @@
 [
   {
+    "path": "img/next-rkj-20190524.jpg",
+    "topLeft": {"x": 110, "y": 617},
+    "topRight": {"x": 1346, "y": 617},
+    "bottomLeft": {"x": 110, "y": 1005},
+    "bottomRight": {"x": 1346, "y": 1005}
+  },
+  {
+    "path": "img/next-rkj-20190321.jpg",
+    "topLeft": {"x": 15, "y": 550},
+    "topRight": {"x": 1009, "y": 550},
+    "bottomLeft": {"x": 15, "y": 753},
+    "bottomRight": {"x": 1009, "y": 753}
+  },
+  {
     "path": "img/chiho-0009.jpg",
     "topLeft": {"x": 368, "y": 406},
     "topRight": {"x": 700, "y": 406},
