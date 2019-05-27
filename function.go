@@ -36,6 +36,7 @@ const (
 
 var (
 	imageList []ImageInfo
+	songsList []SongInfo
 	fontData  *truetype.Font
 )
 
@@ -54,6 +55,15 @@ type ImageInfo struct {
 	BottomRight Point  `json:"bottomRight"`
 }
 
+// SongInfo struct
+type SongInfo struct {
+	Title string `json:"title"`
+	Link  struct {
+		Spotify string `json:"spotify"`
+		Apple   string `json:"apple"`
+	} `json:"link"`
+}
+
 // PubSubMessage struct
 type PubSubMessage struct {
 	Data []byte `json:"data"`
@@ -61,6 +71,7 @@ type PubSubMessage struct {
 
 func init() {
 	loadImageList()
+	loadSongsList()
 	fontData = loadFont(fontFilePath)
 
 	// random seed
@@ -74,11 +85,22 @@ func loadImageList() {
 
 	dec := json.NewDecoder(f)
 	dec.Decode(&imageList)
-	fmt.Printf("%+v\n", imageList)
+}
+
+func loadSongsList() {
+	f, _ := os.Open("songs.json")
+	defer f.Close()
+
+	dec := json.NewDecoder(f)
+	dec.Decode(&songsList)
 }
 
 func selectRandomImage() ImageInfo {
 	return imageList[rand.Intn(len(imageList))]
+}
+
+func selectRandomSong() SongInfo {
+	return songsList[rand.Intn(len(songsList))]
 }
 
 func getTargetDate() time.Time {
@@ -212,4 +234,33 @@ func main() {
 
 	log.Println(tweet.Text)
 
+}
+
+// Tweet daily song
+func TweetSong(ctx context.Context, m PubSubMessage) error {
+	songMain()
+	return nil
+}
+
+func songMain() {
+	// select random song
+	song := selectRandomSong()
+
+	// tweet
+	tweetText := fmt.Sprintf(
+		"今日の1曲: %s\n%s\n%s\n#内藤るな #高井千帆 #平瀬美里\n#ELRFES",
+		song.Title, song.Link.Apple, song.Link.Spotify)
+
+	// api
+	api := getTwitterAPI()
+
+	// tweet
+	v := url.Values{}
+	tweet, err := api.PostTweet(tweetText, v)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	log.Println(tweet.Text)
 }

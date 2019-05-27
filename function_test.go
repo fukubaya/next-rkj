@@ -50,3 +50,11 @@ func TestSelectRandomImage(t *testing.T) {
 		t.Logf("%+v", img)
 	}
 }
+
+func TestSelectRandomSong(t *testing.T) {
+	for i := 0; i < 10; i++ {
+		song := selectRandomSong()
+		t.Logf("%+v", song)
+		songMain()
+	}
+}
