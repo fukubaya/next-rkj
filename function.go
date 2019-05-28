@@ -75,8 +75,9 @@ func init() {
 	fontData = loadFont(fontFilePath)
 
 	// random seed
-	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64))
-	rand.Seed(seed.Int64())
+	t := time.Now().UnixNano() % 1000
+	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64-1000))
+	rand.Seed(seed.Int64() + t)
 }
 
 func loadImageList() {
