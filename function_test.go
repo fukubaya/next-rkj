@@ -55,6 +55,5 @@ func TestSelectRandomSong(t *testing.T) {
 	for i := 0; i < 10; i++ {
 		song := selectRandomSong()
 		t.Logf("%+v", song)
-		songMain()
 	}
 }
