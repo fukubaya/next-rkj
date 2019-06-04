@@ -73,7 +73,10 @@ func init() {
 	loadImageList()
 	loadSongsList()
 	fontData = loadFont(fontFilePath)
+	initRand()
+}
 
+func initRand() {
 	// random seed
 	t := time.Now().UnixNano() % 1000
 	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64-1000))
@@ -203,8 +206,12 @@ func calcFontSize(imgInfo ImageInfo, text string) int {
 
 // Tweet daily comment
 func Tweet(ctx context.Context, m PubSubMessage) error {
+	loadImageList()
+	initRand()
+	fontData = loadFont(fontFilePath)
 	main()
 	return nil
+
 }
 
 func main() {
@@ -239,6 +246,8 @@ func main() {
 
 // Tweet daily song
 func TweetSong(ctx context.Context, m PubSubMessage) error {
+	loadSongsList()
+	initRand()
 	songMain()
 	return nil
 }
