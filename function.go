@@ -112,6 +112,11 @@ func getTargetDate() time.Time {
 	return time.Date(2019, 7, 15, 0, 0, 0, 0, jst)
 }
 
+func getTargetDateTime() time.Time {
+	jst, _ := time.LoadLocation(location)
+	return time.Date(2019, 7, 15, 18, 0, 0, 0, jst)
+}
+
 func getNow() time.Time {
 	jst, _ := time.LoadLocation(location)
 	return time.Now().In(jst)
@@ -123,6 +128,24 @@ func daysUntil(from time.Time, to time.Time) int {
 	}
 	h := int(to.Sub(from).Hours())
 	return (h / 24) + 1
+}
+
+func hoursUntil(from time.Time, to time.Time) int {
+	if from.After(to) {
+		return 0
+	}
+	m := int(to.Sub(from).Minutes())
+	// n時間30分前〜n-1時間30分前はn
+	return (m + 30) / 60
+}
+
+func countdownText(from time.Time) string {
+	hours := hoursUntil(from, getTargetDateTime())
+	if hours <= 100 {
+		return fmt.Sprintf("あと %d 時間", hours)
+	}
+	days := daysUntil(from, getTargetDate())
+	return fmt.Sprintf("あと %d 日", days)
 }
 
 func loadImg(imgPath string) image.Image {
@@ -215,9 +238,19 @@ func Tweet(ctx context.Context, m PubSubMessage) error {
 }
 
 func main() {
+	now := getNow()
 
-	days := daysUntil(getNow(), getTargetDate())
-	text := fmt.Sprintf("あと %d 日", days)
+	hours := hoursUntil(now, getTargetDateTime())
+	// 期限後は実行しない
+	if hours <= 0 {
+		return
+	}
+	// 100時間より前は24n時間前だけ実行
+	if hours > 100 && hours%24 > 0 {
+		return
+	}
+
+	text := countdownText(now)
 
 	// create image
 	out := generateTodayImage(selectRandomImage(), text)

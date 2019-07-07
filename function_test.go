@@ -32,6 +32,53 @@ func TestDays2(t *testing.T) {
 	}
 }
 
+func TestHours(t *testing.T) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	now := time.Date(2019, 7, 14, 17, 30, 0, 1, jst)
+	hours := hoursUntil(now, getTargetDateTime())
+	if hours != 24 {
+		t.Errorf("hours=%d", hours)
+	}
+}
+
+func TestHours2(t *testing.T) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	now := time.Date(2019, 7, 14, 18, 30, 0, 0, jst)
+	hours := hoursUntil(now, getTargetDateTime())
+	if hours != 24 {
+		t.Errorf("hours=%d", hours)
+	}
+}
+
+func TestHours3(t *testing.T) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	now := time.Date(2019, 7, 15, 17, 0, 0, 0, jst)
+	hours := hoursUntil(now, getTargetDateTime())
+	if hours != 1 {
+		t.Errorf("hours=%d", hours)
+	}
+}
+
+func TestCountdownText(t *testing.T) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	// 100.4999h
+	now := time.Date(2019, 7, 11, 13, 30, 0, 0, jst)
+	text := countdownText(now)
+	if text != "あと 4 日" {
+		t.Errorf("text=%s", text)
+	}
+}
+
+func TestCountdownText2(t *testing.T) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	// 100.4999h
+	now := time.Date(2019, 7, 11, 13, 30, 0, 1, jst)
+	text := countdownText(now)
+	if text != "あと 100 時間" {
+		t.Errorf("text=%s", text)
+	}
+}
+
 func TestGenerateImage(t *testing.T) {
 	for i, imgInfo := range imageList {
 		t.Logf("%+v", imgInfo)
