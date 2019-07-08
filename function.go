@@ -20,6 +20,7 @@ import (
 	"math/rand"
 	"net/url"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/ChimeraCoder/anaconda"
@@ -193,26 +194,40 @@ func generateTodayImage(imgInfo ImageInfo, text string) image.Image {
 	out := image.NewRGBA(img.Bounds())
 	draw.Draw(out, out.Bounds(), img, image.Point{0, 0}, draw.Over)
 
+	// split by newline
+	lines := strings.Split(text, "\n")
+
 	// draw
+	maxIndex := -1
+	maxLen := 0
+	for i, l := range lines {
+		if len(l) > maxLen {
+			maxLen = len(l)
+			maxIndex = i
+		}
+	}
 	opt := truetype.Options{
-		Size: float64(calcFontSize(imgInfo, text)),
+		Size: float64(calcFontSize(imgInfo, lines[maxIndex], len(lines))),
 	}
-	face := truetype.NewFace(fontData, &opt)
-	dr := &font.Drawer{
-		Dst:  out,
-		Src:  image.NewUniform(color.RGBA{215, 46, 42, 255}),
-		Face: face,
-		Dot:  fixed.Point26_6{},
+	lineHeight := (imgInfo.BottomLeft.Y - imgInfo.TopLeft.Y) / len(lines)
+	for i, l := range lines {
+		face := truetype.NewFace(fontData, &opt)
+		dr := &font.Drawer{
+			Dst:  out,
+			Src:  image.NewUniform(color.RGBA{215, 46, 42, 255}),
+			Face: face,
+			Dot:  fixed.Point26_6{},
+		}
+		dr.Dot.X = fixed.I((imgInfo.BottomRight.X+imgInfo.BottomLeft.X)/2) - dr.MeasureString(l)/2
+		dr.Dot.Y = fixed.I(imgInfo.TopLeft.Y + i*lineHeight + int(lineHeight/2) + int(fontsize/2))
+		dr.DrawString(l)
 	}
-	dr.Dot.X = fixed.I((imgInfo.BottomRight.X+imgInfo.BottomLeft.X)/2) - dr.MeasureString(text)/2
-	dr.Dot.Y = fixed.I((imgInfo.BottomLeft.Y+imgInfo.TopLeft.Y)/2 + int(fontsize/2))
-	dr.DrawString(text)
 	return out
 }
 
-func calcFontSize(imgInfo ImageInfo, text string) int {
+func calcFontSize(imgInfo ImageInfo, text string, n int) int {
 	var width = imgInfo.TopRight.X - imgInfo.TopLeft.X
-	var height = imgInfo.BottomLeft.Y - imgInfo.TopLeft.Y
+	var height = (imgInfo.BottomLeft.Y - imgInfo.TopLeft.Y) / n
 
 	for i := 0; i < 200; i += 5 {
 		if i > height {
@@ -250,7 +265,7 @@ func main() {
 		return
 	}
 
-	text := countdownText(now)
+	text := fmt.Sprintf("再始動まで\n%s!!", countdownText(now))
 
 	// create image
 	out := generateTodayImage(selectRandomImage(), text)
