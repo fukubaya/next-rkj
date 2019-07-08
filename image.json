@@ -29,10 +29,10 @@
   },
   {
     "path": "img/luna-0010.jpg",
-    "topLeft": {"x": 252, "y": 115},
-    "topRight": {"x": 609, "y": 115},
-    "bottomLeft": {"x": 252, "y": 707},
-    "bottomRight": {"x": 609, "y": 707}
+    "topLeft": {"x": 215, "y": 286},
+    "topRight": {"x": 624, "y": 286},
+    "bottomLeft": {"x": 215, "y": 549},
+    "bottomRight": {"x": 624, "y": 549}
   },
   {
     "path": "img/misato-0011.jpg",
@@ -50,10 +50,10 @@
   },
   {
     "path": "img/chiho-0018.jpg",
-    "topLeft": {"x": 554, "y": 552},
-    "topRight": {"x": 858, "y": 552},
-    "bottomLeft": {"x": 554, "y": 1026},
-    "bottomRight": {"x": 858, "y": 1026}
+    "topLeft": {"x": 532, "y": 659},
+    "topRight": {"x": 885, "y": 659},
+    "bottomLeft": {"x": 532, "y": 881},
+    "bottomRight": {"x": 885, "y": 881}
   },
   {
     "path": "img/chiho-0024.jpg",
@@ -72,9 +72,9 @@
   {
     "path": "img/chiho-0041.jpg",
     "topLeft": {"x": 297, "y": 61},
-    "topRight": {"x": 442, "y": 61},
-    "bottomLeft": {"x": 297, "y": 125},
-    "bottomRight": {"x": 442, "y": 125}
+    "topRight": {"x": 452, "y": 61},
+    "bottomLeft": {"x": 297, "y": 132},
+    "bottomRight": {"x": 452, "y": 132}
   },
   {
     "path": "img/chiho-0074.jpg",
@@ -185,8 +185,8 @@
     "path": "img/misato-0048.jpg",
     "topLeft": {"x": 548, "y": 551},
     "topRight": {"x": 1113, "y": 551},
-    "bottomLeft": {"x": 548, "y": 1058},
-    "bottomRight": {"x": 1113, "y": 1058}
+    "bottomLeft": {"x": 548, "y": 914},
+    "bottomRight": {"x": 1113, "y": 914}
   },
   {
     "path": "img/misato-0073.jpg",
