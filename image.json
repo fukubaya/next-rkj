@@ -7,6 +7,13 @@
     "bottomRight": {"x": 1346, "y": 1005}
   },
   {
+    "path": "img/next-rkj-20190414.jpg",
+    "topLeft": {"x": 23, "y": 720},
+    "topRight": {"x": 1221, "y": 720},
+    "bottomLeft": {"x": 23, "y": 1140},
+    "bottomRight": {"x": 1221, "y": 1140}
+  },
+  {
     "path": "img/next-rkj-20190321.jpg",
     "topLeft": {"x": 15, "y": 550},
     "topRight": {"x": 1009, "y": 550},
@@ -49,6 +56,62 @@
     "bottomRight": {"x": 858, "y": 1026}
   },
   {
+    "path": "img/chiho-0024.jpg",
+    "topLeft": {"x": 843, "y": 507},
+    "topRight": {"x": 1104, "y": 507},
+    "bottomLeft": {"x": 843, "y": 701},
+    "bottomRight": {"x": 1104, "y": 701}
+  },
+  {
+    "path": "img/chiho-0031.jpg",
+    "topLeft": {"x": 533, "y": 30},
+    "topRight": {"x": 983, "y": 30},
+    "bottomLeft": {"x": 533, "y": 191},
+    "bottomRight": {"x": 983, "y": 191}
+  },
+  {
+    "path": "img/chiho-0041.jpg",
+    "topLeft": {"x": 297, "y": 61},
+    "topRight": {"x": 442, "y": 61},
+    "bottomLeft": {"x": 297, "y": 125},
+    "bottomRight": {"x": 442, "y": 125}
+  },
+  {
+    "path": "img/chiho-0074.jpg",
+    "topLeft": {"x": 117, "y": 135},
+    "topRight": {"x": 395, "y": 135},
+    "bottomLeft": {"x": 117, "y": 230},
+    "bottomRight": {"x": 395, "y": 30}
+  },
+  {
+    "path": "img/chiho-0089.jpg",
+    "topLeft": {"x": 287, "y": 178},
+    "topRight": {"x": 681, "y": 178},
+    "bottomLeft": {"x": 287, "y": 548},
+    "bottomRight": {"x": 681, "y": 548}
+  },
+  {
+    "path": "img/chiho-0099.jpg",
+    "topLeft": {"x": 643, "y": 282},
+    "topRight": {"x": 928, "y": 282},
+    "bottomLeft": {"x": 643, "y": 424},
+    "bottomRight": {"x": 928, "y": 424}
+  },
+  {
+    "path": "img/chiho-20190421-001.jpg",
+    "topLeft": {"x": 33, "y": 864},
+    "topRight": {"x": 2002, "y": 864},
+    "bottomLeft": {"x": 33, "y": 1315},
+    "bottomRight": {"x": 2002, "y": 1315}
+  },
+  {
+    "path": "img/luna-0013.jpg",
+    "topLeft": {"x": 205, "y": 285},
+    "topRight": {"x": 501, "y": 285},
+    "bottomLeft": {"x": 205, "y": 492},
+    "bottomRight": {"x": 501, "y": 492}
+  },
+  {
     "path": "img/luna-0020.jpg",
     "topLeft": {"x": 18, "y": 552},
     "topRight": {"x": 1182, "y": 552},
@@ -63,11 +126,32 @@
     "bottomRight": {"x": 710, "y": 447}
   },
   {
+    "path": "img/luna-0047.jpg",
+    "topLeft": {"x": 444, "y": 501},
+    "topRight": {"x": 1110, "y": 501},
+    "bottomLeft": {"x": 444, "y": 980},
+    "bottomRight": {"x": 1110, "y": 980}
+  },
+  {
+    "path": "img/luna-0071.jpg",
+    "topLeft": {"x": 112, "y": 455},
+    "topRight": {"x": 416, "y": 455},
+    "bottomLeft": {"x": 112, "y": 606},
+    "bottomRight": {"x": 416, "y": 606}
+  },
+  {
     "path": "img/luna-0100.jpg",
     "topLeft": {"x": 114, "y": 503},
     "topRight": {"x": 758, "y": 503},
     "bottomLeft": {"x": 114, "y": 891},
     "bottomRight": {"x": 758, "y": 891}
+  },
+  {
+    "path": "img/luna-20190420-001.jpg",
+    "topLeft": {"x": 48, "y": 846},
+    "topRight": {"x": 2026, "y": 846},
+    "bottomLeft": {"x": 48, "y": 1348},
+    "bottomRight": {"x": 2026, "y": 1348}
   },
   {
     "path": "img/misato-0014.jpg",
@@ -84,10 +168,66 @@
     "bottomRight": {"x": 956, "y": 1142}
   },
   {
+    "path": "img/misato-0023.jpg",
+    "topLeft": {"x": 380, "y": 558},
+    "topRight": {"x": 710, "y": 558},
+    "bottomLeft": {"x": 380, "y": 706},
+    "bottomRight": {"x": 710, "y": 706}
+  },
+  {
+    "path": "img/misato-0036.jpg",
+    "topLeft": {"x": 346, "y": 588},
+    "topRight": {"x": 1036, "y": 588},
+    "bottomLeft": {"x": 346, "y": 888},
+    "bottomRight": {"x": 1036, "y": 888}
+  },
+  {
+    "path": "img/misato-0048.jpg",
+    "topLeft": {"x": 548, "y": 551},
+    "topRight": {"x": 1113, "y": 551},
+    "bottomLeft": {"x": 548, "y": 1058},
+    "bottomRight": {"x": 1113, "y": 1058}
+  },
+  {
+    "path": "img/misato-0073.jpg",
+    "topLeft": {"x": 109, "y": 467},
+    "topRight": {"x": 481, "y": 467},
+    "bottomLeft": {"x": 109, "y": 713},
+    "bottomRight": {"x": 481, "y": 713}
+  },
+  {
+    "path": "img/misato-20190420-001.jpg",
+    "topLeft": {"x": 28, "y": 840},
+    "topRight": {"x": 2020, "y": 840},
+    "bottomLeft": {"x": 28, "y": 1340},
+    "bottomRight": {"x": 2020, "y": 1340}
+  },
+  {
     "path": "img/next-rkj-16-9.jpg",
     "topLeft": {"x": 24, "y": 231},
     "topRight": {"x": 607, "y": 231},
     "bottomLeft": {"x": 24, "y": 345},
     "bottomRight": {"x": 607, "y": 345}
+  },
+  {
+    "path": "img/mizoe-20190210.jpg",
+    "topLeft": {"x": 30, "y": 1041},
+    "topRight": {"x": 1509, "y": 1041},
+    "bottomLeft": {"x": 30, "y": 1491},
+    "bottomRight": {"x": 1509, "y": 1491}
+  },
+  {
+    "path": "img/nagashima-20190110.jpg",
+    "topLeft": {"x": 96, "y": 1269},
+    "topRight": {"x": 1534, "y": 1269},
+    "bottomLeft": {"x": 96, "y": 1743},
+    "bottomRight": {"x": 1534, "y": 1743}
+  },
+  {
+    "path": "img/nagashima-20190302.jpg",
+    "topLeft": {"x": 51, "y": 1578},
+    "topRight": {"x": 1497, "y": 1578},
+    "bottomLeft": {"x": 51, "y": 2022},
+    "bottomRight": {"x": 1497, "y": 2022}
   }
 ]
