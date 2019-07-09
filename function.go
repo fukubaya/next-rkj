@@ -260,10 +260,6 @@ func main() {
 	if hours <= 0 {
 		return
 	}
-	// 100時間より前は24n時間前だけ実行
-	if hours > 100 && hours%24 > 0 {
-		return
-	}
 
 	text := fmt.Sprintf("再始動まで\n%s!!", countdownText(now))
 
