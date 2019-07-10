@@ -257,7 +257,7 @@ func main() {
 
 	hours := hoursUntil(now, getTargetDateTime())
 	// 期限後は実行しない
-	if hours <= 0 {
+	if hours <= 0 || hours > 100 {
 		return
 	}
 
