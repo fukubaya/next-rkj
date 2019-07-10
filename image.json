@@ -229,5 +229,12 @@
     "topRight": {"x": 1497, "y": 1578},
     "bottomLeft": {"x": 51, "y": 2022},
     "bottomRight": {"x": 1497, "y": 2022}
+  },
+  {
+    "path": "img/staff-20181117.jpg",
+    "topLeft": {"x": 90, "y": 690},
+    "topRight": {"x": 1458, "y": 690},
+    "bottomLeft": {"x": 90, "y": 1311},
+    "bottomRight": {"x": 1458, "y": 1311}
   }
 ]
