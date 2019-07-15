@@ -87,9 +87,9 @@ func initRand() {
 
 func loadImageList() {
 	lastImage = ImageInfo{
-		"img/rkj-20190429.jpg",
-		Point{30, 680},
-		Point{1448, 680},
+		"img/bolt-20190715-001.jpg",
+		Point{30, 513},
+		Point{1448, 513},
 		Point{30, 1078},
 		Point{1448, 1078},
 	}
@@ -119,12 +119,12 @@ func selectRandomSong() SongInfo {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2019, 7, 15, 0, 0, 0, 0, jst)
+	return time.Date(2019, 8, 3, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2019, 7, 15, 18, 0, 0, 0, jst)
+	return time.Date(2019, 8, 3, 11, 10, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -281,10 +281,10 @@ func main() {
 	var out image.Image
 	var text string
 	if near {
-		text = "まもなく\n再始動!!"
+		text = "まもなく\nTIFのステージ!!"
 		out = generateTodayImage(lastImage, text)
 	} else {
-		text = fmt.Sprintf("再始動まで\n%s!!", countdownText(now))
+		text = fmt.Sprintf("TIFのステージまで\n%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
@@ -297,7 +297,7 @@ func main() {
 	// tweet
 	v := url.Values{}
 	v.Add("media_ids", media.MediaIDString)
-	tweetText := fmt.Sprintf("%s\n#内藤るな #高井千帆 #平瀬美里\n#ELRFES", text)
+	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花 #平瀬美里\n#BOLT", text)
 
 	tweet, err := api.PostTweet(tweetText, v)
 
@@ -323,7 +323,7 @@ func songMain() {
 
 	// tweet
 	tweetText := fmt.Sprintf(
-		"今日の1曲: %s\n%s\n%s\n#内藤るな #高井千帆 #平瀬美里\n#ELRFES",
+		"今日の1曲: %s\n%s\n%s\n#内藤るな #白浜あや #高井千帆 #青山菜花 #平瀬美里\n#BOLT",
 		song.Title, song.Link.Apple, song.Link.Spotify)
 
 	// api
