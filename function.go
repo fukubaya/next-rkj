@@ -39,6 +39,7 @@ var (
 	imageList []ImageInfo
 	songsList []SongInfo
 	fontData  *truetype.Font
+	lastImage ImageInfo
 )
 
 // Point struct
@@ -85,6 +86,14 @@ func initRand() {
 }
 
 func loadImageList() {
+	lastImage = ImageInfo{
+		"img/rkj-20190429.jpg",
+		Point{30, 680},
+		Point{1448, 680},
+		Point{30, 1078},
+		Point{1448, 1078},
+	}
+
 	f, _ := os.Open("image.json")
 	defer f.Close()
 
@@ -138,6 +147,12 @@ func hoursUntil(from time.Time, to time.Time) int {
 	m := int(to.Sub(from).Minutes())
 	// n時間30分前〜n-1時間30分前はn
 	return (m + 30) / 60
+}
+
+func nearTargetDateTime(from time.Time, to time.Time) bool {
+	s := to.Sub(from).Seconds()
+	// 1分前から5分後まで
+	return s < 60 && s > -300
 }
 
 func countdownText(from time.Time) string {
@@ -256,16 +271,22 @@ func main() {
 	now := getNow()
 
 	hours := hoursUntil(now, getTargetDateTime())
+	near := nearTargetDateTime(now, getTargetDateTime())
+
 	// 期限後は実行しない
-	if hours <= 0 || hours > 100 {
+	if (hours <= 0 || hours > 100) && !near {
 		return
 	}
 
-	text := fmt.Sprintf("再始動まで\n%s!!", countdownText(now))
-
-	// create image
-	out := generateTodayImage(selectRandomImage(), text)
-
+	var out image.Image
+	var text string
+	if near {
+		text = "まもなく\n再始動!!"
+		out = generateTodayImage(lastImage, text)
+	} else {
+		text = fmt.Sprintf("再始動まで\n%s!!", countdownText(now))
+		out = generateTodayImage(selectRandomImage(), text)
+	}
 	// encode image to base64
 	encodeString := encodePng(out)
 

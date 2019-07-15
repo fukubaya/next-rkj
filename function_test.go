@@ -59,6 +59,42 @@ func TestHours3(t *testing.T) {
 	}
 }
 
+func TestNearTargetDateTime1(t *testing.T) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	now := time.Date(2019, 7, 15, 17, 59, 0, 0, jst)
+	near := nearTargetDateTime(now, getTargetDateTime())
+	if near {
+		t.Errorf("near=%v", near)
+	}
+}
+
+func TestNearTargetDateTime2(t *testing.T) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	now := time.Date(2019, 7, 15, 17, 59, 0, 1, jst)
+	near := nearTargetDateTime(now, getTargetDateTime())
+	if !near {
+		t.Errorf("near=%v", near)
+	}
+}
+
+func TestNearTargetDateTime3(t *testing.T) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	now := time.Date(2019, 7, 15, 18, 4, 59, 0, jst)
+	near := nearTargetDateTime(now, getTargetDateTime())
+	if !near {
+		t.Errorf("near=%v", near)
+	}
+}
+
+func TestNearTargetDateTime4(t *testing.T) {
+	jst, _ := time.LoadLocation("Asia/Tokyo")
+	now := time.Date(2019, 7, 15, 18, 5, 0, 0, jst)
+	near := nearTargetDateTime(now, getTargetDateTime())
+	if near {
+		t.Errorf("near=%v", near)
+	}
+}
+
 func TestCountdownText(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 100.4999h
@@ -80,6 +116,14 @@ func TestCountdownText2(t *testing.T) {
 }
 
 func TestGenerateImage(t *testing.T) {
+	t.Logf("%+v", lastImage)
+	out := generateTodayImage(lastImage, "まもなく\n再始動!!")
+	f, err := os.Create("last.png")
+	if err != nil {
+		t.Errorf("failed to save file")
+	}
+	png.Encode(f, out)
+
 	for i, imgInfo := range imageList {
 		t.Logf("%+v", imgInfo)
 		out := generateTodayImage(imgInfo, "再始動まで\nあと 10 日")
