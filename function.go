@@ -274,7 +274,7 @@ func main() {
 	near := nearTargetDateTime(now, getTargetDateTime())
 
 	// 期限後は実行しない
-	if (hours <= 0 || hours > 100) && !near {
+	if hours <= 0 && !near {
 		return
 	}
 
