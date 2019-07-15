@@ -22,7 +22,7 @@ func TestDays(t *testing.T) {
 		t.Errorf("days=%d", days)
 	}
 }
-i
+
 func TestDays2(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	now := time.Date(2019, 8, 3, 0, 0, 0, 1, jst)
