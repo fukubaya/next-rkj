@@ -208,47 +208,5 @@
     "topRight": {"x": 607, "y": 231},
     "bottomLeft": {"x": 24, "y": 345},
     "bottomRight": {"x": 607, "y": 345}
-  },
-  {
-    "path": "img/mizoe-20190210.jpg",
-    "topLeft": {"x": 30, "y": 1041},
-    "topRight": {"x": 1509, "y": 1041},
-    "bottomLeft": {"x": 30, "y": 1491},
-    "bottomRight": {"x": 1509, "y": 1491}
-  },
-  {
-    "path": "img/nagashima-20190110.jpg",
-    "topLeft": {"x": 96, "y": 1269},
-    "topRight": {"x": 1534, "y": 1269},
-    "bottomLeft": {"x": 96, "y": 1743},
-    "bottomRight": {"x": 1534, "y": 1743}
-  },
-  {
-    "path": "img/nagashima-20190302.jpg",
-    "topLeft": {"x": 51, "y": 1578},
-    "topRight": {"x": 1497, "y": 1578},
-    "bottomLeft": {"x": 51, "y": 2022},
-    "bottomRight": {"x": 1497, "y": 2022}
-  },
-  {
-    "path": "img/staff-20181117.jpg",
-    "topLeft": {"x": 90, "y": 690},
-    "topRight": {"x": 1458, "y": 690},
-    "bottomLeft": {"x": 90, "y": 1311},
-    "bottomRight": {"x": 1458, "y": 1311}
-  },
-  {
-    "path": "img/watanabe-20190407.jpg",
-    "topLeft": {"x": 96, "y": 1428},
-    "topRight": {"x": 1558, "y": 1428},
-    "bottomLeft": {"x": 96, "y": 1960},
-    "bottomRight": {"x": 1558, "y": 1960}
-  },
-  {
-    "path": "img/yumoto-20181201.jpg",
-    "topLeft": {"x": 55, "y": 386},
-    "topRight": {"x": 759, "y": 386},
-    "bottomLeft": {"x": 55, "y": 682},
-    "bottomRight": {"x": 759, "y": 682}
   }
 ]
