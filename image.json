@@ -12,5 +12,12 @@
     "topRight": {"x": 513, "y": 186},
     "bottomLeft": {"x": 15, "y": 318},
     "bottomRight": {"x": 513, "y": 318}
+  },
+  {
+    "path": "img/bolt-20190715-003.jpg",
+    "topLeft": {"x": 40, "y": 723},
+    "topRight": {"x": 2167, "y": 723},
+	  "bottomLeft": {"x": 40, "y": 1936},
+    "bottomRight": {"x": 2167, "y": 1936}
   }
 ]
