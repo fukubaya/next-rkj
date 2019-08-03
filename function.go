@@ -119,12 +119,12 @@ func selectRandomSong() SongInfo {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2019, 8, 3, 0, 0, 0, 0, jst)
+	return time.Date(2019, 10, 15, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2019, 8, 3, 11, 10, 0, 0, jst)
+	return time.Date(2019, 10, 15, 12, 0, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -281,10 +281,10 @@ func main() {
 	var out image.Image
 	var text string
 	if near {
-		text = "まもなく\nTIFのステージ!!"
+		text = "まもなく\nギュウ農フェスのステージ!!"
 		out = generateTodayImage(lastImage, text)
 	} else {
-		text = fmt.Sprintf("TIFのステージまで\n%s!!", countdownText(now))
+		text = fmt.Sprintf("ギュウ農フェスまで\n%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
