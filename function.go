@@ -119,12 +119,12 @@ func selectRandomSong() SongInfo {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2019, 10, 15, 0, 0, 0, 0, jst)
+	return time.Date(2019, 10, 5, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2019, 10, 15, 12, 0, 0, 0, jst)
+	return time.Date(2019, 10, 5, 12, 0, 0, 0, jst)
 }
 
 func getNow() time.Time {
