@@ -348,5 +348,19 @@
       "spotify": "https://open.spotify.com/track/56S5gu4sMBt2coktXz1LZ2",
       "apple": "https://music.apple.com/jp/album/%E7%AB%9C%E4%BA%BA%E3%81%8F%E3%82%93%E3%81%8C%E5%A4%A7%E5%A5%BD%E3%81%8D%E3%81%A7%E3%81%99/1469872542?i=1469872544&app=music"
     }
+  },
+  {
+    "title": "星が降る街",
+    "link": {
+      "spotify": "https://open.spotify.com/track/3RO1I1QFXjfzZjgdNeRisO"
+      "apple": "https://music.apple.com/jp/album/%E6%98%9F%E3%81%8C%E9%99%8D%E3%82%8B%E8%A1%97/1475199776?i=1475199778&app=music"
+    }
+  },
+  {
+    "title": "夜更けのプロローグ",
+    "link": {
+      "spotify": "https://open.spotify.com/track/5AhIUlUnHXbEZp42iG5tQy",
+      "apple": "https://music.apple.com/jp/album/%E5%A4%9C%E6%9B%B4%E3%81%91%E3%81%AE%E3%83%97%E3%83%AD%E3%83%AD%E3%83%BC%E3%82%B0/1475199776?i=1475199779&app=music"
+    }
   }
 ]
