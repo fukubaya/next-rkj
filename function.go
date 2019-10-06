@@ -32,7 +32,6 @@ import (
 const (
 	location     = "Asia/Tokyo"
 	fontFilePath = "font/mplus-1p-bold.ttf"
-	fontsize     = 75
 )
 
 var (
@@ -119,12 +118,12 @@ func selectRandomSong() SongInfo {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2019, 10, 5, 0, 0, 0, 0, jst)
+	return time.Date(2019, 11, 15, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2019, 10, 5, 15, 25, 0, 0, jst)
+	return time.Date(2019, 11, 15, 18, 00, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -221,8 +220,9 @@ func generateTodayImage(imgInfo ImageInfo, text string) image.Image {
 			maxIndex = i
 		}
 	}
+	fontsize := float64(calcFontSize(imgInfo, lines[maxIndex], len(lines)))
 	opt := truetype.Options{
-		Size: float64(calcFontSize(imgInfo, lines[maxIndex], len(lines))),
+		Size: fontsize,
 	}
 	lineHeight := (imgInfo.BottomLeft.Y - imgInfo.TopLeft.Y) / len(lines)
 	for i, l := range lines {
@@ -234,7 +234,7 @@ func generateTodayImage(imgInfo ImageInfo, text string) image.Image {
 			Dot:  fixed.Point26_6{},
 		}
 		dr.Dot.X = fixed.I((imgInfo.BottomRight.X+imgInfo.BottomLeft.X)/2) - dr.MeasureString(l)/2
-		dr.Dot.Y = fixed.I(imgInfo.TopLeft.Y + i*lineHeight + int(lineHeight/2) + int(fontsize/2))
+		dr.Dot.Y = fixed.I(imgInfo.TopLeft.Y + i*lineHeight + int(fontsize/2))
 		dr.DrawString(l)
 	}
 	return out
@@ -281,10 +281,10 @@ func main() {
 	var out image.Image
 	var text string
 	if near {
-		text = "まもなく\nギュウ農フェスのステージ!!"
+		text = "まもなく\nマウントレーニアホール渋谷の\nステージ!!"
 		out = generateTodayImage(lastImage, text)
 	} else {
-		text = fmt.Sprintf("ギュウ農フェスまで\n%s!!", countdownText(now))
+		text = fmt.Sprintf("マウントレーニアホール渋谷の\nイベントまで\n%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
