@@ -234,7 +234,7 @@ func generateTodayImage(imgInfo ImageInfo, text string) image.Image {
 			Dot:  fixed.Point26_6{},
 		}
 		dr.Dot.X = fixed.I((imgInfo.BottomRight.X+imgInfo.BottomLeft.X)/2) - dr.MeasureString(l)/2
-		dr.Dot.Y = fixed.I(imgInfo.TopLeft.Y + i*lineHeight + int(fontsize/2))
+		dr.Dot.Y = fixed.I(imgInfo.TopLeft.Y + i*lineHeight + int(lineHeight/2) + int(fontsize/2))
 		dr.DrawString(l)
 	}
 	return out
