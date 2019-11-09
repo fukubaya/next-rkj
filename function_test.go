@@ -37,7 +37,7 @@ func TestDays2(t *testing.T) {
 func TestHours(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の24時間30分前+1n秒後
-	now := time.Date(2019, 11, 14, 17, 30, 0, 1, jst)
+	now := time.Date(2019, 11, 14, 18, 30, 0, 1, jst)
 	hours := hoursUntil(now, getTargetDateTime())
 	if hours != 24 {
 		t.Errorf("hours=%d", hours)
@@ -47,7 +47,7 @@ func TestHours(t *testing.T) {
 func TestHours2(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の23時間30分前
-	now := time.Date(2019, 11, 14, 18, 30, 0, 0, jst)
+	now := time.Date(2019, 11, 14, 19, 30, 0, 0, jst)
 	hours := hoursUntil(now, getTargetDateTime())
 	if hours != 24 {
 		t.Errorf("hours=%d", hours)
@@ -57,7 +57,7 @@ func TestHours2(t *testing.T) {
 func TestHours3(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の1時間前
-	now := time.Date(2019, 11, 15, 17, 0, 0, 0, jst)
+	now := time.Date(2019, 11, 15, 18, 0, 0, 0, jst)
 	hours := hoursUntil(now, getTargetDateTime())
 	if hours != 1 {
 		t.Errorf("hours=%d", hours)
@@ -67,7 +67,7 @@ func TestHours3(t *testing.T) {
 func TestNearTargetDateTime1(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の59分前
-	now := time.Date(2019, 11, 15, 17, 1, 0, 0, jst)
+	now := time.Date(2019, 11, 15, 18, 1, 0, 0, jst)
 	near := nearTargetDateTime(now, getTargetDateTime())
 	if near {
 		t.Errorf("near=%v", near)
@@ -77,7 +77,7 @@ func TestNearTargetDateTime1(t *testing.T) {
 func TestNearTargetDateTime2(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の1分前+1n秒後
-	now := time.Date(2019, 11, 15, 17, 59, 0, 1, jst)
+	now := time.Date(2019, 11, 15, 18, 59, 0, 1, jst)
 	near := nearTargetDateTime(now, getTargetDateTime())
 	if !near {
 		t.Errorf("near=%v", near)
@@ -87,7 +87,7 @@ func TestNearTargetDateTime2(t *testing.T) {
 func TestNearTargetDateTime3(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の4分59秒後
-	now := time.Date(2019, 11, 15, 18, 4, 59, 0, jst)
+	now := time.Date(2019, 11, 15, 19, 4, 59, 0, jst)
 	near := nearTargetDateTime(now, getTargetDateTime())
 	if !near {
 		t.Errorf("near=%v", near)
@@ -97,7 +97,7 @@ func TestNearTargetDateTime3(t *testing.T) {
 func TestNearTargetDateTime4(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の5分後
-	now := time.Date(2019, 11, 15, 18, 5, 0, 0, jst)
+	now := time.Date(2019, 11, 15, 19, 5, 0, 0, jst)
 	near := nearTargetDateTime(now, getTargetDateTime())
 	if near {
 		t.Errorf("near=%v", near)
@@ -107,7 +107,7 @@ func TestNearTargetDateTime4(t *testing.T) {
 func TestCountdownText(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の100時間31分
-	now := time.Date(2019, 11, 11, 13, 29, 0, 0, jst)
+	now := time.Date(2019, 11, 11, 14, 29, 0, 0, jst)
 	text := countdownText(now)
 	if text != "あと 4 日" {
 		t.Errorf("text=%s", text)
@@ -117,7 +117,7 @@ func TestCountdownText(t *testing.T) {
 func TestCountdownText2(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の100時間前
-	now := time.Date(2019, 11, 11, 14, 0, 0, 0, jst)
+	now := time.Date(2019, 11, 11, 15, 0, 0, 0, jst)
 	text := countdownText(now)
 	if text != "あと 100 時間" {
 		t.Errorf("text=%s", text)
