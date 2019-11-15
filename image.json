@@ -1,40 +1,5 @@
 [
   {
-    "path": "img/bolt-20190715-001.jpg",
-    "topLeft": {"x": 30, "y": 513},
-    "topRight": {"x": 1448, "y": 513},
-    "bottomLeft": {"x": 30, "y": 1078},
-    "bottomRight": {"x": 1448, "y": 1078}
-  },
-  {
-    "path": "img/bolt-20190715-002.jpg",
-    "topLeft": {"x": 15, "y": 186},
-    "topRight": {"x": 513, "y": 186},
-    "bottomLeft": {"x": 15, "y": 318},
-    "bottomRight": {"x": 513, "y": 318}
-  },
-  {
-    "path": "img/bolt-20190715-003.jpg",
-    "topLeft": {"x": 40, "y": 723},
-    "topRight": {"x": 2167, "y": 723},
-	  "bottomLeft": {"x": 40, "y": 1936},
-    "bottomRight": {"x": 2167, "y": 1936}
-  },
-  {
-    "path": "img/bolt-20191005-001.jpg",
-    "topLeft": {"x": 10, "y": 270},
-    "topRight": {"x": 630, "y": 270},
-	  "bottomLeft": {"x": 10, "y": 472},
-    "bottomRight": {"x": 630, "y": 472}
-  },
-  {
-    "path": "img/bolt-20191006-001.jpg",
-    "topLeft": {"x": 30, "y": 600},
-    "topRight": {"x": 1447, "y": 600},
-    "bottomLeft": {"x": 30, "y": 1078},
-    "bottomRight": {"x": 1447, "y": 1078}
-  },
-  {
     "path": "img/bolt-20191005-002.jpg",
     "topLeft": {"x": 10, "y": 270},
     "topRight": {"x": 740, "y": 270},
@@ -43,13 +8,6 @@
   },
   {
     "path": "img/bolt-20191005-003.jpg",
-    "topLeft": {"x": 10, "y": 800},
-    "topRight": {"x": 740, "y": 800},
-	  "bottomLeft": {"x": 10, "y": 1115},
-    "bottomRight": {"x": 740, "y": 115}
-  },
-  {
-    "path": "img/bolt-20191005-004.jpg",
     "topLeft": {"x": 10, "y": 800},
     "topRight": {"x": 740, "y": 800},
 	  "bottomLeft": {"x": 10, "y": 1115},
@@ -68,5 +26,12 @@
     "topRight": {"x": 676, "y": 650},
 	  "bottomLeft": {"x": 10, "y": 1019},
     "bottomRight": {"x": 676, "y": 1019}
+  },
+  {
+    "path": "img/main_img_pc.jpg",
+    "topLeft": {"x": 10, "y": 250},
+    "topRight": {"x": 1010, "y": 250},
+	  "bottomLeft": {"x": 10, "y": 590},
+    "bottomRight": {"x": 1010, "y": 590}
   }
 ]
