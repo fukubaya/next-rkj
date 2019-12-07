@@ -17,7 +17,7 @@ func TestA(t *testing.T) {
 func TestDays(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 当日0時の1秒前
-	now := time.Date(2019, 12, 6, 23, 59, 59, 0, jst)
+	now := time.Date(2019, 12, 25, 23, 59, 59, 0, jst)
 	days := daysUntil(now, getTargetDate())
 	if days != 1 {
 		t.Errorf("days=%d", days)
@@ -27,7 +27,7 @@ func TestDays(t *testing.T) {
 func TestDays2(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 当日0時の1n秒後
-	now := time.Date(2019, 12, 7, 0, 0, 0, 1, jst)
+	now := time.Date(2019, 12, 26, 0, 0, 0, 1, jst)
 	days := daysUntil(now, getTargetDate())
 	if days != 0 {
 		t.Errorf("days=%d", days)
@@ -37,7 +37,7 @@ func TestDays2(t *testing.T) {
 func TestHours(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の24時間30分前+1n秒後
-	now := time.Date(2019, 12, 6, 16, 30, 0, 1, jst)
+	now := time.Date(2019, 12, 25, 18, 15, 0, 1, jst)
 	hours := hoursUntil(now, getTargetDateTime())
 	if hours != 24 {
 		t.Errorf("hours=%d", hours)
@@ -47,7 +47,7 @@ func TestHours(t *testing.T) {
 func TestHours2(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の23時間30分前
-	now := time.Date(2019, 12, 6, 17, 30, 0, 0, jst)
+	now := time.Date(2019, 12, 25, 19, 15, 0, 0, jst)
 	hours := hoursUntil(now, getTargetDateTime())
 	if hours != 24 {
 		t.Errorf("hours=%d", hours)
@@ -57,7 +57,7 @@ func TestHours2(t *testing.T) {
 func TestHours3(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の1時間前
-	now := time.Date(2019, 12, 7, 16, 0, 0, 0, jst)
+	now := time.Date(2019, 12, 26, 17, 45, 0, 0, jst)
 	hours := hoursUntil(now, getTargetDateTime())
 	if hours != 1 {
 		t.Errorf("hours=%d", hours)
@@ -67,7 +67,7 @@ func TestHours3(t *testing.T) {
 func TestNearTargetDateTime1(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の59分前
-	now := time.Date(2019, 12, 7, 16, 1, 0, 0, jst)
+	now := time.Date(2019, 12, 26, 17, 44, 0, 0, jst)
 	near := nearTargetDateTime(now, getTargetDateTime())
 	if near {
 		t.Errorf("near=%v", near)
@@ -77,7 +77,7 @@ func TestNearTargetDateTime1(t *testing.T) {
 func TestNearTargetDateTime2(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の1分前+1n秒後
-	now := time.Date(2019, 12, 7, 16, 59, 0, 1, jst)
+	now := time.Date(2019, 12, 26, 18, 44, 0, 1, jst)
 	near := nearTargetDateTime(now, getTargetDateTime())
 	if !near {
 		t.Errorf("near=%v", near)
@@ -87,7 +87,7 @@ func TestNearTargetDateTime2(t *testing.T) {
 func TestNearTargetDateTime3(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の4分59秒後
-	now := time.Date(2019, 12, 7, 17, 4, 59, 0, jst)
+	now := time.Date(2019, 12, 26, 18, 49, 59, 0, jst)
 	near := nearTargetDateTime(now, getTargetDateTime())
 	if !near {
 		t.Errorf("near=%v", near)
@@ -97,7 +97,7 @@ func TestNearTargetDateTime3(t *testing.T) {
 func TestNearTargetDateTime4(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の5分後
-	now := time.Date(2019, 12, 7, 17, 5, 0, 0, jst)
+	now := time.Date(2019, 12, 26, 18, 50, 0, 0, jst)
 	near := nearTargetDateTime(now, getTargetDateTime())
 	if near {
 		t.Errorf("near=%v", near)
@@ -107,7 +107,7 @@ func TestNearTargetDateTime4(t *testing.T) {
 func TestCountdownText(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の100時間31分前
-	now := time.Date(2019, 12, 3, 12, 29, 0, 0, jst)
+	now := time.Date(2019, 12, 22, 14, 14, 0, 0, jst)
 	text := countdownText(now)
 	if text != "あと 4 日" {
 		t.Errorf("text=%s", text)
@@ -117,7 +117,7 @@ func TestCountdownText(t *testing.T) {
 func TestCountdownText2(t *testing.T) {
 	jst, _ := time.LoadLocation("Asia/Tokyo")
 	// 予定時刻の100時間前
-	now := time.Date(2019, 12, 3, 13, 0, 0, 0, jst)
+	now := time.Date(2019, 12, 22, 14, 45, 0, 0, jst)
 	text := countdownText(now)
 	if text != "あと 100 時間" {
 		t.Errorf("text=%s", text)
@@ -126,7 +126,7 @@ func TestCountdownText2(t *testing.T) {
 
 func TestGenerateImage(t *testing.T) {
 	t.Logf("%+v", lastImage)
-	out := generateTodayImage(lastImage, "まもなく\nさいたま国際マラソン けやきひろばのステージ!!")
+	out := generateTodayImage(lastImage, "まもなく\nH.I.P. presents FUMI FES. vol.4のステージ!!")
 	f, err := os.Create("last.png")
 	if err != nil {
 		t.Errorf("failed to save file")
@@ -135,7 +135,7 @@ func TestGenerateImage(t *testing.T) {
 
 	for i, imgInfo := range imageList {
 		t.Logf("%+v", imgInfo)
-		out := generateTodayImage(imgInfo, "さいたま国際マラソン\nけやきひろばのステージまで\nあと 18 日")
+		out := generateTodayImage(imgInfo, "H.I.P. presents\nFUMI FES. vol.4のステージまで\nあと 18 日")
 		f, err := os.Create(fmt.Sprintf("./output%02d.png", i))
 		if err != nil {
 			t.Errorf("failed to save file")
