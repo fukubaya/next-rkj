@@ -229,7 +229,7 @@ func generateTodayImage(imgInfo ImageInfo, text string) image.Image {
 		face := truetype.NewFace(fontData, &opt)
 		dr := &font.Drawer{
 			Dst:  out,
-			Src:  image.NewUniform(color.RGBA{215, 46, 42, 255}),
+			Src:  image.NewUniform(color.RGBA{151, 95, 162, 255}),
 			Face: face,
 			Dot:  fixed.Point26_6{},
 		}
