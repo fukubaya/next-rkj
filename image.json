@@ -28,11 +28,11 @@
     "bottomRight": {"x": 676, "y": 1019}
   },
   {
-    "path": "img/bolt-20191219-001.png",
-    "topLeft": {"x": 50, "y": 412},
-    "topRight": {"x": 1150, "y": 412},
-	  "bottomLeft": {"x": 50, "y": 623},
-    "bottomRight": {"x": 1150, "y": 623}
+    "path": "img/bolt-20191224-001.png",
+    "topLeft": {"x": 10, "y": 305},
+    "topRight": {"x": 868, "y": 305},
+	  "bottomLeft": {"x": 10, "y": 656},
+    "bottomRight": {"x": 868, "y": 656}
   },
   {
     "path": "img/main_img_pc.jpg",
