@@ -118,12 +118,12 @@ func selectRandomSong() SongInfo {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 2, 9, 0, 0, 0, 0, jst)
+	return time.Date(2020, 2, 22, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 2, 9, 16, 15, 0, 0, jst)
+	return time.Date(2020, 2, 22, 14, 0, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -280,11 +280,14 @@ func main() {
 
 	var out image.Image
 	var text string
+	var textTw string
 	if near {
-		text = "まもなく\nMX IDOL FESTIVAL Vol.15のステージ!!"
+		text = "まもなく\n@JAM the Field vol.17のステージ!!"
+		textTw = "まもなく\n@ JAM the Field vol.17のステージ!!"
 		out = generateTodayImage(lastImage, text)
 	} else {
-		text = fmt.Sprintf("MX IDOL FESTIVAL Vol.15の\nステージまで\n%s!!", countdownText(now))
+		text = fmt.Sprintf("@JAM the Field vol.17の\nステージまで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("@ JAM the Field vol.17の\nステージまで\n%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
@@ -297,7 +300,7 @@ func main() {
 	// tweet
 	v := url.Values{}
 	v.Add("media_ids", media.MediaIDString)
-	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト", text)
+	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト", textTw)
 
 	tweet, err := api.PostTweet(tweetText, v)
 
