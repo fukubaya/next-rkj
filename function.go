@@ -118,12 +118,12 @@ func selectRandomSong() SongInfo {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 2, 23, 0, 0, 0, 0, jst)
+	return time.Date(2020, 3, 8, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 2, 23, 15, 0, 0, 0, jst)
+	return time.Date(2020, 3, 8, 12, 0, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -282,12 +282,12 @@ func main() {
 	var text string
 	var textTw string
 	if near {
-		text = "まもなく\nH.I.P. presents FUMI FES. vol.7のステージ!!"
-		textTw = "まもなく\nH.I.P. presents FUMI FES. vol.7のステージ!!"
+		text = "まもなく\n1stメジャーデビューアルバム発売記念リリースツアー\n＠セブンパークアリオ柏のステージ!!"
+		textTw = "まもなく\n1stメジャーデビューアルバム発売記念リリースツアー\n＠セブンパークアリオ柏のステージ!!"
 		out = generateTodayImage(lastImage, text)
 	} else {
-		text = fmt.Sprintf("H.I.P. presents FUMI FES. vol.7の\nステージまで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("H.I.P. presents FUMI FES. vol.7の\nステージまで\n%s!!", countdownText(now))
+		text = fmt.Sprintf("1stメジャーデビューアルバム発売記念リリースツアー\n＠セブンパークアリオ柏の\nステージまで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("1stメジャーデビューアルバム発売記念リリースツアー\n＠セブンパークアリオ柏の\nステージまで\n%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
@@ -300,7 +300,7 @@ func main() {
 	// tweet
 	v := url.Values{}
 	v.Add("media_ids", media.MediaIDString)
-	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト", textTw)
+	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト #BOLTデマス", textTw)
 
 	tweet, err := api.PostTweet(tweetText, v)
 

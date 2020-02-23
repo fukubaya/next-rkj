@@ -50,7 +50,7 @@ func TestHours2(t *testing.T) {
 	}
 }
 
-func TestHours3(t *testing.T) {
+bfunc TestHours3(t *testing.T) {
 	// 予定時刻の1時間前
 	now := getTargetDateTime().Add(-1 * time.Hour)
 	hours := hoursUntil(now, getTargetDateTime())
@@ -115,7 +115,7 @@ func TestCountdownText2(t *testing.T) {
 
 func TestGenerateImage(t *testing.T) {
 	t.Logf("%+v", lastImage)
-	out := generateTodayImage(lastImage, "まもなく\nH.I.P. presents FUMI FES. vol.7のステージ!!")
+	out := generateTodayImage(lastImage, "まもなく\n1stメジャーデビューアルバム発売記念リリースツアー\n＠セブンパークアリオ柏のステージ!!")
 	f, err := os.Create("last.png")
 	if err != nil {
 		t.Errorf("failed to save file")
@@ -124,7 +124,7 @@ func TestGenerateImage(t *testing.T) {
 
 	for i, imgInfo := range imageList {
 		t.Logf("%+v", imgInfo)
-		out := generateTodayImage(imgInfo, "H.I.P. presents FUMI FES. vol.7の\nステージまで\nあと 18 日")
+		out := generateTodayImage(imgInfo, "1stメジャーデビューアルバム発売記念リリースツアー\n＠セブンパークアリオ柏の\nステージまで\nあと 18 日")
 		f, err := os.Create(fmt.Sprintf("./output%02d.png", i))
 		if err != nil {
 			t.Errorf("failed to save file")
