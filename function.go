@@ -118,12 +118,12 @@ func selectRandomSong() SongInfo {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 3, 14, 0, 0, 0, 0, jst)
+	return time.Date(2020, 4, 5, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 3, 14, 13, 0, 0, 0, jst)
+	return time.Date(2020, 4, 5, 11, 50, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -282,12 +282,12 @@ func main() {
 	var text string
 	var textTw string
 	if near {
-		text = "まもなく\n『ちぃちゃん、卒業おめでとう記念スペシャル\nみんなで卒業のお祝いするTV』\nインターネットサイン会!!"
-		textTw = "まもなく\n『ちぃちゃん、卒業おめでとう記念スペシャル みんなで卒業のお祝いするTV』\nインターネットサイン会!!"
+		text = "まもなく\nギュウ農フェス春のSP2020\n5th anniversary 2daysのステージ!!"
+		textTw = "まもなく\nギュウ農フェス春のSP2020\n5th anniversary 2daysのステージ!!"
 		out = generateTodayImage(lastImage, text)
 	} else {
-		text = fmt.Sprintf("『ちぃちゃん、卒業おめでとう記念スペシャル\nみんなで卒業のお祝いするTV』\nインターネットサイン会まで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("『ちぃちゃん、卒業おめでとう記念スペシャル みんなで卒業のお祝いするTV』\nインターネットサイン会まで\n%s!!", countdownText(now))
+		text = fmt.Sprintf("ギュウ農フェス春のSP2020\n5th anniversary 2daysのステージまで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("ギュウ農フェス春のSP2020\n5th anniversary 2daysのステージまで\n%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
