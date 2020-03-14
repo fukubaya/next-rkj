@@ -286,8 +286,8 @@ func main() {
 		textTw = "まもなく\nギュウ農フェス春のSP2020\n5th anniversary 2daysのステージ!!"
 		out = generateTodayImage(lastImage, text)
 	} else {
-		text = fmt.Sprintf("ギュウ農フェス春のSP2020\n5th anniversary 2daysのステージまで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("ギュウ農フェス春のSP2020\n5th anniversary 2daysのステージまで\n%s!!", countdownText(now))
+		text = fmt.Sprintf("4/5 ギュウ農フェス春のSP2020\n5th anniversary 2daysのステージまで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("4/5 ギュウ農フェス春のSP2020 5th anniversary 2daysのステージまで\n%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64

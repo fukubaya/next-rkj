@@ -124,7 +124,7 @@ func TestGenerateImage(t *testing.T) {
 
 	for i, imgInfo := range imageList {
 		t.Logf("%+v", imgInfo)
-		out := generateTodayImage(imgInfo, "ギュウ農フェス春のSP2020\n5th anniversary 2daysのステージまで\nあと 18 日")
+		out := generateTodayImage(imgInfo, "4/5 ギュウ農フェス春のSP2020\n5th anniversary 2daysのステージまで\nあと 18 日")
 		f, err := os.Create(fmt.Sprintf("./output%02d.png", i))
 		if err != nil {
 			t.Errorf("failed to save file")
