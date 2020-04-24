@@ -287,7 +287,7 @@ func main() {
 		out = generateTodayImage(lastImage, text)
 	} else {
 		text = fmt.Sprintf("7/15 1stメジャーデビューアルバム\n「POP」発売まで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("5/16 1stメジャーデビューアルバム「POP」発売まで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("7/15 1stメジャーデビューアルバム「POP」発売まで\n%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
