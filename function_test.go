@@ -99,7 +99,7 @@ func TestCountdownText(t *testing.T) {
 	// 予定時刻の100時間31分前
 	now := getTargetDateTime().Add(-100*time.Hour - 31*time.Minute)
 	text := countdownText(now)
-	if text != "あと 4 日" {
+	if text != fmt.Sprintf("あと %d 日", daysUntil(now, getTargetDate())) {
 		t.Errorf("text=%s", text)
 	}
 }
@@ -115,7 +115,7 @@ func TestCountdownText2(t *testing.T) {
 
 func TestGenerateImage(t *testing.T) {
 	t.Logf("%+v", lastImage)
-	out := generateTodayImage(lastImage, "まもなく\nB.O.L.T初ワンマンライブ＠下北沢GARDEN!!")
+	out := generateTodayImage(lastImage, "まもなく\n1stメジャーデビューアルバム\n「POP」発売!!")
 	f, err := os.Create("last.png")
 	if err != nil {
 		t.Errorf("failed to save file")
@@ -124,7 +124,7 @@ func TestGenerateImage(t *testing.T) {
 
 	for i, imgInfo := range imageList {
 		t.Logf("%+v", imgInfo)
-		out := generateTodayImage(imgInfo, "5/16 B.O.L.T初ワンマンライブ\n＠下北沢GARDENまで\nあと 18 日")
+		out := generateTodayImage(imgInfo, "7/15 1stメジャーデビューアルバム\n「POP」発売まで\nあと 18 日")
 		f, err := os.Create(fmt.Sprintf("./output%02d.png", i))
 		if err != nil {
 			t.Errorf("failed to save file")
