@@ -11,3 +11,5 @@ require (
 	golang.org/x/image v0.0.0-20190424155947-59b11bec70c7
 	golang.org/x/net v0.0.0-20190424112056-4829fb13d2c6 // indirect
 )
+
+go 1.11
