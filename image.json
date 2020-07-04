@@ -168,6 +168,34 @@
     "bottomRight": {"x": 2008, "y": 1946}
   },
   {
+    "path": "img/bolt-20200618-001.jpg",
+    "topLeft": {"x": 45, "y": 646},
+    "topRight": {"x": 1755, "y": 646},
+	  "bottomLeft": {"x": 45, "y": 1180},
+    "bottomRight": {"x": 1755, "y": 1180}
+  },
+  {
+    "path": "img/bolt-20200627-001.jpg",
+    "topLeft": {"x": 20, "y": 764},
+    "topRight": {"x": 2028, "y": 764},
+	  "bottomLeft": {"x": 20, "y": 1516},
+    "bottomRight": {"x": 2028, "y": 1516}
+  },
+  {
+    "path": "img/bolt-20200630-001.jpg",
+    "topLeft": {"x": 20, "y": 786},
+    "topRight": {"x": 1780, "y": 786},
+	  "bottomLeft": {"x": 20, "y": 1059},
+    "bottomRight": {"x": 1780, "y": 1059}
+  },
+  {
+    "path": "img/bolt-20200703-001.jpg",
+    "topLeft": {"x": 20, "y": 513},
+    "topRight": {"x": 1280, "y": 513},
+	  "bottomLeft": {"x": 20, "y": 938},
+    "bottomRight": {"x": 1280, "y": 938}
+  },
+  {
     "path": "img/main_img_pc.jpg",
     "topLeft": {"x": 10, "y": 250},
     "topRight": {"x": 1010, "y": 250},
