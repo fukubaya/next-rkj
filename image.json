@@ -191,9 +191,9 @@
   {
     "path": "img/bolt-20200703-001.jpg",
     "topLeft": {"x": 20, "y": 513},
-    "topRight": {"x": 1280, "y": 513},
+    "topRight": {"x": 1180, "y": 513},
 	  "bottomLeft": {"x": 20, "y": 938},
-    "bottomRight": {"x": 1280, "y": 938}
+    "bottomRight": {"x": 1180, "y": 938}
   },
   {
     "path": "img/main_img_pc.jpg",
