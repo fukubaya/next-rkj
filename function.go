@@ -282,9 +282,9 @@ func main() {
 	var text string
 	var textTw string
 	if near {
-		text = "まもなく\n1stメジャーデビューアルバム「POP」発売!!"
-		textTw = "まもなく\n1stメジャーデビューアルバム「POP」発売!!"
-		out = generateTodayImage(lastImage, text)
+		text = "1stメジャーデビューアルバム「POP」発売!!"
+		textTw = "1stメジャーデビューアルバム「POP」発売!!"
+		out = generateTodayImage(selectRandomImage(), text)
 	} else {
 		text = fmt.Sprintf("7/15 1stメジャーデビューアルバム\n「POP」発売まで\n%s!!", countdownText(now))
 		textTw = fmt.Sprintf("7/15 1stメジャーデビューアルバム「POP」発売まで\n%s!!", countdownText(now))
