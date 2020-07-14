@@ -138,3 +138,44 @@ func TestSelectRandomSong(t *testing.T) {
 		t.Logf("%+v", song)
 	}
 }
+
+func TestGetSong(t *testing.T) {
+	if s := getSong("竜人くんが大好きです♡"); s.Title != "竜人くんが大好きです♡" {
+		t.Errorf("invalid")
+	}
+}
+
+func TestSelectPOPSong(t *testing.T) {
+	jst, _ := time.LoadLocation(location)
+
+	if s, l := selectPOPSong(time.Date(2020, 7, 15, 3, 1, 2, 3, jst)); s.Title != "星が降る街 (ALBUM ver.)" || l != "夜明け" {
+		t.Errorf("invalid")
+	}
+	if s, l := selectPOPSong(time.Date(2020, 7, 15, 7, 1, 2, 3, jst)); s.Title != "足音" || l != "朝" {
+		t.Errorf("invalid")
+	}
+	if s, l := selectPOPSong(time.Date(2020, 7, 15, 10, 1, 2, 3, jst)); s.Title != "BON-NO BORN" || l != "午前中" {
+		t.Errorf("invalid")
+	}
+	if s, l := selectPOPSong(time.Date(2020, 7, 15, 12, 1, 2, 3, jst)); s.Title != "宙に浮くぐらい" || l != "正午" {
+		t.Errorf("invalid")
+	}
+	if s, l := selectPOPSong(time.Date(2020, 7, 15, 15, 1, 2, 3, jst)); s.Title != "SLEEPY BUSTERS" || l != "昼" {
+		t.Errorf("invalid")
+	}
+	if s, l := selectPOPSong(time.Date(2020, 7, 15, 18, 1, 2, 3, jst)); s.Title != "わたし色のトビラ" || l != "夕方" {
+		t.Errorf("invalid")
+	}
+	if s, l := selectPOPSong(time.Date(2020, 7, 15, 20, 1, 2, 3, jst)); s.Title != "axis" || l != "夜" {
+		t.Errorf("invalid")
+	}
+	if s, l := selectPOPSong(time.Date(2020, 7, 15, 23, 1, 2, 3, jst)); s.Title != "スーパースター" || l != "深夜" {
+		t.Errorf("invalid")
+	}
+	if s, l := selectPOPSong(time.Date(2020, 7, 15, 1, 1, 2, 3, jst)); s.Title != "寝具でSING A SONG" || l != "就寝" {
+		t.Errorf("invalid")
+	}
+	if s, l := selectPOPSong(time.Date(2020, 7, 15, 5, 1, 2, 3, jst)); s.Title != "夜更けのプロローグ (ALBUM ver.)" || l != "夜明け" {
+		t.Errorf("invalid")
+	}
+}

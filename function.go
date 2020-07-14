@@ -107,6 +107,44 @@ func selectRandomSong() SongInfo {
 	return songsList[rand.Intn(len(songsList))]
 }
 
+func getSong(name string) SongInfo {
+	for _, s := range songsList {
+		if s.Title == name {
+			return s
+		}
+	}
+	return selectRandomSong()
+}
+
+func selectPOPSong(t time.Time) (SongInfo, string) {
+	h := t.Hour()
+
+	switch h {
+	case 3, 4:
+		return getSong("星が降る街 (ALBUM ver.)"), "夜明け"
+	case 7, 8, 9:
+		return getSong("足音"), "朝"
+	case 10, 11:
+		return getSong("BON-NO BORN"), "午前中"
+	case 12:
+		return getSong("宙に浮くぐらい"), "正午"
+	case 13, 14, 15:
+		return getSong("SLEEPY BUSTERS"), "昼"
+	case 16, 17, 18:
+		return getSong("わたし色のトビラ"), "夕方"
+	case 19, 20, 21, 22:
+		return getSong("axis"), "夜"
+	case 23, 0:
+		return getSong("スーパースター"), "深夜"
+	case 1, 2:
+		return getSong("寝具でSING A SONG"), "就寝"
+	case 5, 6:
+		return getSong("夜更けのプロローグ (ALBUM ver.)"), "夜明け"
+	default:
+		return getSong("axis"), "リード曲"
+	}
+}
+
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
 	return time.Date(2020, 7, 15, 0, 0, 0, 0, jst)
@@ -313,12 +351,13 @@ func TweetSong(ctx context.Context, m PubSubMessage) error {
 
 func songMain() {
 	// select random song
-	song := selectRandomSong()
+	now := getNow()
+	song, label := selectPOPSong(now)
 
 	// tweet
 	tweetText := fmt.Sprintf(
-		"今日の1曲: %s\n%s\n%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト",
-		song.Title, song.Link.Apple, song.Link.Spotify)
+		"%d時『%s』: %s\n\n%s\n%s\n\n#BOLT #ボルト",
+		now.Hour(), label, song.Title, song.Link.Apple, song.Link.Spotify)
 
 	// api
 	api := getTwitterAPI()
