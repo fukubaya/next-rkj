@@ -38,7 +38,6 @@ var (
 	imageList []ImageInfo
 	songsList []SongInfo
 	fontData  *truetype.Font
-	lastImage ImageInfo
 )
 
 // Point struct
@@ -85,14 +84,6 @@ func initRand() {
 }
 
 func loadImageList() {
-	lastImage = ImageInfo{
-		"img/bolt-20190715-001.jpg",
-		Point{30, 513},
-		Point{1448, 513},
-		Point{30, 1078},
-		Point{1448, 1078},
-	}
-
 	f, _ := os.Open("image.json")
 	defer f.Close()
 
