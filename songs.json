@@ -1,352 +1,86 @@
 [
   {
-    "title": "最the高",
-    "link": {
-      "spotify": "https://open.spotify.com/track/59rrRPvpcbXSqEDfD0hgon",
-      "apple": "https://music.apple.com/jp/album/%E6%9C%80the%E9%AB%98/1415669961?i=1415669963"
-    }
-  },
-  {
-    "title": "記憶のサイズ",
-    "link": {
-      "spotify" : "https://open.spotify.com/track/6rODQgGjrYFLqf1DclfntJ",
-      "apple": "https://music.apple.com/jp/album/%E8%A8%98%E6%86%B6%E3%81%AE%E3%82%B5%E3%82%A4%E3%82%BA/1415669961?i=1415669964"
-    }
-  },
-  {
-    "title": "ダサくなきゃ信じない",
-    "link": {
-      "spotify": "https://open.spotify.com/track/75jBCzto8XRAVNdEMW0BVg",
-      "apple": "https://music.apple.com/jp/album/%E3%83%80%E3%82%B5%E3%81%8F%E3%81%AA%E3%81%8D%E3%82%83%E4%BF%A1%E3%81%98%E3%81%AA%E3%81%84/1415669961?i=1415669965"
-    }
-  },
-  {
-    "title": "タコ感 ロッカジャポニカ",
-    "link": {
-      "spotify": "https://open.spotify.com/track/3OvWNi0Tbg3tJuJvupkvrG",
-      "apple": "https://music.apple.com/jp/album/%E3%82%BF%E3%82%B3%E6%84%9F-%E3%83%AD%E3%83%83%E3%82%AB%E3%82%B8%E3%83%A3%E3%83%9D%E3%83%8B%E3%82%AB/1415669961?i=1415669966"
-    }
-  },
-  {
-    "title": "MUGEN",
-    "link": {
-      "spotify": "https://open.spotify.com/track/0HQbmgAK2uosrezhr78OWY",
-      "apple": "https://music.apple.com/jp/album/mugen/1441599730?i=1441599943"
-    }
-  },
-  {
-    "title": "OVERTURE",
-    "link": {
-      "spotify": "https://open.spotify.com/track/0YPis1r6A2HS8RpvbTcQKX",
-      "apple": "https://music.apple.com/jp/album/overture/1299644047?i=1299644048"
-    }
-  },
-  {
-    "title": "ワールドピース",
-    "link": {
-      "spotify": "https://open.spotify.com/track/4FPaMmvc1RsJi3suZfnpqM",
-      "apple": "https://music.apple.com/jp/album/%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%83%94%E3%83%BC%E3%82%B9/1299644047?i=1299644049"
-    }
-  },
-  {
-    "title": "WEE FIGHT OH!!!!!",
-    "link": {
-      "spotify": "https://open.spotify.com/track/62EQiD13iJpHarriIsVE9g",
-      "apple": "https://music.apple.com/jp/album/wee-fight-oh/1299644047?i=1299644050"
-    }
-  },
-  {
-    "title": "ぶっちぎりデイズ!!",
-    "link": {
-      "spotify": "https://open.spotify.com/track/2Z8qtwxqnwDfqPfSkUs0CV",
-      "apple": "https://music.apple.com/jp/album/%E3%81%B6%E3%81%A3%E3%81%A1%E3%81%8E%E3%82%8A%E3%83%87%E3%82%A4%E3%82%BA/1299644047?i=1299644621"
-    }
-  },
-  {
-    "title": "Chillっ子同盟",
-    "link": {
-      "spotify": "https://open.spotify.com/track/3uZTj5COHz7HBW6GZxZvQc",
-      "apple": "https://music.apple.com/jp/album/chill%E3%81%A3%E5%AD%90%E5%90%8C%E7%9B%9F/1299644047?i=1299644622"
-    }
-  },
-  {
-    "title": "ASTRO GIRL",
-    "link": {
-      "spotify": "https://open.spotify.com/track/1t42bCfc2hQ5rRMlFEOwXH",
-      "apple": "https://music.apple.com/jp/album/astro-girl/1299644047?i=1299644623"
-    }
-  },
-  {
-    "title": "教歌SHOCK!",
-    "link": {
-      "spotify": "https://open.spotify.com/track/17GRVJ6qE4zX0ssIBjrqol",
-      "apple": "https://music.apple.com/jp/album/%E6%95%99%E6%AD%8Cshock/1299644047?i=1299644624"
-    }
-  },
-  {
-    "title": "放課後アフタースクール",
-    "link": {
-      "spotify": "https://open.spotify.com/track/5sefLKoPuymWUEzpHMOGnQ",
-      "apple": "https://music.apple.com/jp/album/%E6%94%BE%E8%AA%B2%E5%BE%8C%E3%82%A2%E3%83%95%E3%82%BF%E3%83%BC%E3%82%B9%E3%82%AF%E3%83%BC%E3%83%AB/1299644047?i=1299644625"
-    }
-  },
-  {
-    "title": "BUSY",
-    "link": {
-      "spotify": "https://open.spotify.com/track/112prsu7Iml7P5HsKzX0I5",
-      "apple": "https://music.apple.com/jp/album/busy/1299644047?i=1299644626"
-    }
-  },
-  {
-    "title": "だけどユメ見る",
-    "link": {
-      "spotify": "https://open.spotify.com/track/714HFQ5QxEbBeSqveOqI2n",
-      "apple": "https://music.apple.com/jp/album/%E3%81%A0%E3%81%91%E3%81%A9%E3%83%A6%E3%83%A1%E8%A6%8B%E3%82%8B/1299644047?i=1299644627"
-    }
-  },
-  {
-    "title": "わたしの地図",
-    "link": {
-      "spotify": "https://open.spotify.com/track/1aZiBQjH17OCUf3iqLVbzG",
-      "apple": "https://music.apple.com/jp/album/%E3%82%8F%E3%81%9F%E3%81%97%E3%81%AE%E5%9C%B0%E5%9B%B3/1299644047?i=1299644628"
-    }
-  },
-  {
-    "title": "タンバリン、凛々",
-    "link": {
-      "spotify": "https://open.spotify.com/track/1ZxVM1deutViYJQ5bniHJU",
-      "apple": "https://music.apple.com/jp/album/%E3%82%BF%E3%83%B3%E3%83%90%E3%83%AA%E3%83%B3-%E5%87%9B%E3%80%85/1299644047?i=1299644629"
-    }
-  },
-  {
-    "title": "歌いたいのうた",
-    "link": {
-      "spotify": "https://open.spotify.com/track/5H44Ml7IRUTWPeeJOapyFz",
-      "apple": "https://music.apple.com/jp/album/%E6%AD%8C%E3%81%84%E3%81%9F%E3%81%84%E3%81%AE%E3%81%86%E3%81%9F/1299644047?i=1299644630"
-    }
-  },
-  {
-    "title": "タンバリン、凛々",
-    "link": {
-      "spotify": "https://open.spotify.com/track/3TPhGmmdLpBm5mGSlXxfxa",
-      "apple": "https://music.apple.com/jp/album/%E3%82%BF%E3%83%B3%E3%83%90%E3%83%AA%E3%83%B3-%E5%87%9B%E3%80%85/1240058271?i=1240058497"
-    }
-  },
-  {
-    "title": "Dreaming Road",
-    "link": {
-      "spotify": "https://open.spotify.com/track/2VBanqlAcqRDdHGKKpR28n",
-      "apple": "https://music.apple.com/jp/album/dreaming-road/1240058271?i=1240058498"
-    }
-  },
-  {
-    "title": "SPARKLE TOUR!!",
-    "link": {
-      "spotify": "https://open.spotify.com/track/1iMh1SE686gYyYp8hP4wc4",
-      "apple": "https://music.apple.com/jp/album/sparkle-tour/1240058271?i=1240058499"
-    }
-  },
-  {
-    "title": "SPARKLE TOUR!! (仙台 ver.)",
-    "link": {
-      "spotify": "https://open.spotify.com/track/2kSmitIFTA0T15OP0CKhAL",
-      "apple": "https://music.apple.com/jp/album/sparkle-tour-%E4%BB%99%E5%8F%B0-ver/1240058271?i=1240058500"
-    }
-  },
-  {
-    "title": "SPARKLE TOUR!! (福岡 ver.)",
-    "link": {
-      "spotify": "https://open.spotify.com/track/0mGTfdYnUH36Vn6Zfejq1y",
-      "apple": "https://music.apple.com/jp/album/sparkle-tour-%E7%A6%8F%E5%B2%A1-ver/1240058271?i=1240058531"
-    }
-  },
-  {
-    "title": "SPARKLE TOUR!! (大阪 ver.)",
-    "link": {
-      "spotify": "https://open.spotify.com/track/70Xv5DZVnfTjaNrjTJKMug",
-      "apple": "https://music.apple.com/jp/album/sparkle-tour-%E5%A4%A7%E9%98%AA-ver/1240058271?i=1240058532"
-    }
-  },
-  {
-    "title": "SPARKLE TOUR!! (名古屋 ver.)",
-    "link": {
-      "spotify": "https://open.spotify.com/track/4UtrCVlKmtPh2dHqlXu9rT",
-      "apple": "https://music.apple.com/jp/album/sparkle-tour-%E5%90%8D%E5%8F%A4%E5%B1%8B-ver/1240058271?i=1240058533"
-    }
-  },
-  {
-    "title": "教歌SHOCK!",
-    "link": {
-      "spotify": "https://open.spotify.com/track/6CZYzFNBJrbl6BXKopK2OP",
-      "apple": "https://music.apple.com/jp/album/%E6%95%99%E6%AD%8Cshock/1126667321?i=1126667377"
-    }
-  },
-  {
-    "title": "全力大実験!",
-    "link": {
-      "spotify": "https://open.spotify.com/track/39LR83Whx7SsDCeNwJNbjM",
-      "apple": "https://music.apple.com/jp/album/%E5%85%A8%E5%8A%9B%E5%A4%A7%E5%AE%9F%E9%A8%93/1126667321?i=1126667378"
-    }
-  },
-  {
-    "title": "世直しタイムスリップ",
-    "link": {
-      "spotify": "https://open.spotify.com/track/0NCp7EdX0RipbKolMz2rlQ",
-      "apple": "https://music.apple.com/jp/album/%E4%B8%96%E7%9B%B4%E3%81%97%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%B9%E3%83%AA%E3%83%83%E3%83%97/1126667321?i=1126667379"
-    }
-  },
-  {
-    "title": "NEW CROWN",
-    "link": {
-      "spotify": "https://open.spotify.com/track/4xbRRwrppmbG0LU3807ooM",
-      "apple": "https://music.apple.com/jp/album/new-crown/1126667321?i=1126667441"
-    }
-  },
-  {
-    "title": "ワールドピース",
-    "link": {
-      "spotify": "https://open.spotify.com/track/17tftBVxHbzEt88BIvIhAP",
-      "apple": "https://music.apple.com/jp/album/%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%83%94%E3%83%BC%E3%82%B9/1073849848?i=1073849853"
-    }
-  },
-  {
-    "title": "WEE FIGHT OH!!!!!",
-    "link": {
-      "spotify": "https://open.spotify.com/track/4xT2p5xLECgzC38qMSKmzI",
-      "apple": "https://music.apple.com/jp/album/wee-fight-oh/1073849848?i=1073849854"
-    }
-  },
-  {
-    "title": "歌いたいのうた",
-    "link": {
-      "spotify": "https://open.spotify.com/track/5umS6AAD1aDTDhgj82DD2M",
-      "apple": "https://music.apple.com/jp/album/%E6%AD%8C%E3%81%84%E3%81%9F%E3%81%84%E3%81%AE%E3%81%86%E3%81%9F/1073849848?i=1073849855"
-    }
-  },
-  {
-    "title": "ボクタチ、ワタシイロ",
-    "link": {
-      "spotify": "https://open.spotify.com/track/5fUSX2J5OLW2PwHaAJwwka",
-      "apple": "https://music.apple.com/jp/album/%E3%83%9C%E3%82%AF%E3%82%BF%E3%83%81-%E3%83%AF%E3%82%BF%E3%82%B7%E3%82%A4%E3%83%AD/1073849848?i=1073849856"
-    }
-  },
-  {
-    "title": "Saint Mental gift",
-    "link": {
-      "spotify": "https://open.spotify.com/track/2A9jKksNoUFE2M8CtjoSFp",
-      "apple": "https://music.apple.com/jp/album/saint-mental-gift/1450240081?i=1450240082"
-    }
-  },
-  {
-    "title": "MUGEN",
-    "link": {
-      "spotify": "https://open.spotify.com/track/6TPhSQ77pwaJH7EcO8hOkA",
-      "apple": "https://music.apple.com/jp/album/mugen/1444979076?i=1444979077"
-    }
-  },
-  {
-    "title": "イエロー",
-    "link": {
-      "spotify": "https://open.spotify.com/track/5QU89jWJIGytpPW6m21Nyo",
-      "apple": "https://music.apple.com/jp/album/%E3%82%A4%E3%82%A8%E3%83%AD%E3%83%BC/1444979076?i=1444979078"
-    }
-  },
-  {
-    "title": "SUPER STAR",
-    "link": {
-      "spotify": "https://open.spotify.com/track/1G1RQCxIvgmlWmVjx7xozP",
-      "apple": "https://music.apple.com/jp/album/super-star/1444979076?i=1444979351"
-    }
-  },
-  {
-    "title": "Memories",
-    "link": {
-      "spotify": "https://open.spotify.com/track/1Rij5rXIWgVBRSFO04N8mt",
-      "apple": "https://music.apple.com/jp/album/memories/1444979076?i=1444979354"
-    }
-  },
-  {
-    "title": "キミと笑顔",
-    "link": {
-      "spotify": "https://open.spotify.com/track/6wz0p8Lv2l6iajBZ01pRXk",
-      "apple": "https://music.apple.com/jp/album/%E3%82%AD%E3%83%9F%E3%81%A8%E7%AC%91%E9%A1%94/1444979076?i=1444979357"
-    }
-  },
-  {
-    "title": "さよならからはじまりへ",
-    "link": {
-      "spotify": "https://open.spotify.com/track/3JUAgGzSbSspDm7SxjtApU",
-      "apple": "https://music.apple.com/jp/album/%E3%81%95%E3%82%88%E3%81%AA%E3%82%89%E3%81%8B%E3%82%89%E3%81%AF%E3%81%98%E3%81%BE%E3%82%8A%E3%81%B8/1444979076?i=1444979360"
-    }
-  },
-  {
-    "title": "だけどユメ見る",
-    "link": {
-      "spotify": "https://open.spotify.com/track/2UlEMvpV9QUGByN4v1lvl5",
-      "apple": "https://music.apple.com/jp/album/%E3%81%A0%E3%81%91%E3%81%A9%E3%83%A6%E3%83%A1%E8%A6%8B%E3%82%8B/1174199932?i=1174199947"
-    }
-  },
-  {
-    "title": "忍者ナイン",
-    "link": {
-      "spotify": "https://open.spotify.com/track/0Oqeg9hB4Uk602QL60ZDOK",
-      "apple": "https://music.apple.com/jp/album/%E5%BF%8D%E8%80%85%E3%83%8A%E3%82%A4%E3%83%B3/1174199932?i=1174199949"
-    }
-  },
-  {
-    "title": "腹!筋!録!",
-    "link": {
-      "spotify": "https://open.spotify.com/track/5UZiqzIaVoastjyjJttLyK",
-      "apple": "https://music.apple.com/jp/album/%E8%85%B9-%E7%AD%8B-%E9%8C%B2/1174207500?i=1174207764"
-    }
-  },
-  {
-    "title": "烈 作郎 〜レッツクロウ〜",
-    "link": {
-      "spotify": "https://open.spotify.com/track/4vEdu0wTDmoXqR0pffNbIN",
-      "apple": "https://music.apple.com/jp/album/%E7%83%88-%E4%BD%9C%E6%9C%97-%E3%83%AC%E3%83%83%E3%83%84%E3%82%AF%E3%83%AD%E3%82%A6/1174205424?i=1174205698"
-    }
-  },
-  {
-    "title": "魔法のスープ",
-    "link": {
-      "spotify": "https://open.spotify.com/track/0SaYzIsEAOlBH6ylQ5peF1",
-      "apple": "https://music.apple.com/jp/album/%E9%AD%94%E6%B3%95%E3%81%AE%E3%82%B9%E3%83%BC%E3%83%97/1174203879?i=1174204135"
-    }
-  },
-  {
-    "title": "独特道徳ドクトリン",
-    "link": {
-      "spotify": "https://open.spotify.com/track/4TIeeBNOHAgdlCC9veVvpg",
-      "apple": "https://music.apple.com/jp/album/%E7%8B%AC%E7%89%B9%E9%81%93%E5%BE%B3%E3%83%89%E3%82%AF%E3%83%88%E3%83%AA%E3%83%B3/1174209614?i=1174209621"
-    }
-  },
-  {
-    "title": "MUSIC FANTASY",
-    "link": {
-      "spotify": "https://open.spotify.com/track/3JOOnWrAPGPPiz2Nt2wnUV",
-      "apple": "https://music.apple.com/jp/album/music-fantasy/1174202869?i=1174202937"
-    }
-  },
-  {
-    "title": "わが輩は乙女である",
-    "link": {
-      "spotify": "https://open.spotify.com/track/06n46H2XFp7qxdGSn6jrRR",
-      "apple": "https://music.apple.com/jp/album/%E3%82%8F%E3%81%8C%E8%BC%A9%E3%81%AF%E4%B9%99%E5%A5%B3%E3%81%A7%E3%81%82%E3%82%8B/1126664330?i=1126664362"
-    }
-  },
-  {
-    "title": "アブラカタブラ アルジェブラ",
-    "link": {
-      "spotify": "https://open.spotify.com/track/5zBiSXSSqyWrOpbXvAxyGV",
-      "apple": "https://music.apple.com/jp/album/%E3%82%A2%E3%83%96%E3%83%A9%E3%82%AB%E3%82%BF%E3%83%96%E3%83%A9-%E3%82%A2%E3%83%AB%E3%82%B8%E3%82%A7%E3%83%96%E3%83%A9/1126664330?i=1126664363"
-    }
-  },
-  {
     "title": "竜人くんが大好きです♡",
     "link": {
       "spotify": "https://open.spotify.com/track/56S5gu4sMBt2coktXz1LZ2",
       "apple": "https://music.apple.com/jp/album/%E7%AB%9C%E4%BA%BA%E3%81%8F%E3%82%93%E3%81%8C%E5%A4%A7%E5%A5%BD%E3%81%8D%E3%81%A7%E3%81%99/1469872542?i=1469872544&app=music"
+    }
+  },
+  {
+    "title": "星が降る街 (ALBUM ver.)",
+    "link": {
+      "spotify": "https://open.spotify.com/track/4HZHdTxH8KxO7LI1pyAY5w",
+      "apple": "https://music.apple.com/jp/album/%E6%98%9F%E3%81%8C%E9%99%8D%E3%82%8B%E8%A1%97-album-ver/1521593783?i=1521593785"
+    }
+  },
+  {
+    "title": "足音",
+    "link": {
+      "spotify": "https://open.spotify.com/track/5Tu8x4XXmL7zQxlFOPfnG8",
+      "apple": "https://music.apple.com/jp/album/%E8%B6%B3%E9%9F%B3/1521593783?i=1521593786"
+    }
+  },
+  {
+    "title": "BON-NO BORN",
+    "link": {
+      "spotify": "https://open.spotify.com/track/7BB3ssAyjkQtB8zB4ZLx7K",
+      "apple": "https://music.apple.com/jp/album/bon-no-born/1521593783?i=1521593787"
+    }
+  },
+  {
+    "title": "宙に浮くぐらい",
+    "link": {
+      "spotify": "https://open.spotify.com/track/7I8Dq4XCZH9Lqcz0IWUJgx",
+      "apple": "https://music.apple.com/jp/album/%E5%AE%99%E3%81%AB%E6%B5%AE%E3%81%8F%E3%81%90%E3%82%89%E3%81%84/1521593783?i=1521593790"
+    }
+  },
+  {
+    "title": "SLEEPY BUSTERS",
+    "link": {
+      "spotify": "https://open.spotify.com/track/3hOp6SYLjs3uj2gR8IKw4n",
+      "apple": "https://music.apple.com/jp/album/sleepy-busters/1521593783?i=1521593791"
+    }
+  },
+  {
+    "title": "わたし色のトビラ",
+    "link": {
+      "spotify": "https://open.spotify.com/track/7wSGRaPZC7qM8ohEOUH8Lr",
+      "apple": "https://music.apple.com/jp/album/%E3%82%8F%E3%81%9F%E3%81%97%E8%89%B2%E3%81%AE%E3%83%88%E3%83%93%E3%83%A9/1521593783?i=1521593792"
+    }
+  },
+  {
+    "title": "axis",
+    "link": {
+      "spotify": "https://open.spotify.com/track/1dYuNDXXMu2K8dWamtV6Sm",
+      "apple": "https://music.apple.com/jp/album/axis/1521593783?i=1521593793"
+    }
+  },
+  {
+    "title": "スーパースター",
+    "link": {
+      "spotify": "https://open.spotify.com/track/2vhRHRDu8Yh36M0wK44I2t",
+      "apple": "https://music.apple.com/jp/album/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC/1521593783?i=1521593794"
+    }
+  },
+  {
+    "title": "夜更けのプロローグ (ALBUM ver.)",
+    "link": {
+      "spotify": "https://open.spotify.com/track/3vN2wnLxnjMQ9vKCcWluC5",
+      "apple": "https://music.apple.com/jp/album/%E5%A4%9C%E6%9B%B4%E3%81%91%E3%81%AE%E3%83%97%E3%83%AD%E3%83%AD%E3%83%BC%E3%82%B0-album-ver/1521593783?i=1521593795"
+    }
+  },
+  {
+    "title": "寝具でSING A SONG",
+    "link": {
+      "spotify": "https://open.spotify.com/track/3bYUUBvqBjurS8Uf9UpjmC",
+      "apple": "https://music.apple.com/jp/album/%E5%AF%9D%E5%85%B7%E3%81%A7sing-a-song/1521593783?i=1521593946"
+    }
+  },
+  {
+    "title": "ここから (ALBUM ver.)",
+    "link": {
+      "spotify": "https://open.spotify.com/track/0sQ0o5kzb7rEfasLXzKILS",
+      "apple": "https://music.apple.com/jp/album/%E3%81%93%E3%81%93%E3%81%8B%E3%82%89-album-ver/1521593783?i=1521593947"
     }
   },
   {
@@ -368,13 +102,6 @@
     "link": {
       "spotify": "https://open.spotify.com/track/4DT72pJ7IsoykL3q9Mq9zb",
       "apple": "https://music.apple.com/jp/album/chuu-ni-uku-gurai-single/1492794307"
-    }
-  },
-  {
-    "title": "Memories (ROCK A JAPONICA ver.) ",
-    "link": {
-      "spotify": "https://open.spotify.com/album/4gYolsAkFEwolbsk1Gv5HX",
-      "apple": "https://music.apple.com/jp/album/memories-rock-a-japonica-ver/1495142868"
     }
   },
   {
