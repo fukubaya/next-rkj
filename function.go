@@ -315,8 +315,8 @@ func main() {
 		textTw = "まもなく B.O.L.T 1st ALBUM RELEASE ONE MAN!!"
 		out = generateTodayImage(selectRandomImage(), text)
 	} else {
-		text = fmt.Sprintf("B.O.L.T 1st ALBUM RELEASE ONE MANまで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("B.O.L.T 1st ALBUM RELEASE ONE MANまで\n%s!!", countdownText(now))
+		text = fmt.Sprintf("2021/05/16 B.O.L.T 1st ALBUM RELEASE ONE MANまで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("2021/05/16\nB.O.L.T 1st ALBUM RELEASE ONE MANまで\n%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
