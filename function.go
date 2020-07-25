@@ -147,12 +147,12 @@ func selectPOPSong(t time.Time) (SongInfo, string) {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 7, 25, 0, 0, 0, 0, jst)
+	return time.Date(2020, 8, 6, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 7, 25, 14, 0, 0, 0, jst)
+	return time.Date(2020, 8, 6, 17, 45, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -311,12 +311,12 @@ func main() {
 	var text string
 	var textTw string
 	if near {
-		text = "まもなく B.O.L.T.V 〜ボルティービー〜!!"
-		textTw = "まもなく B.O.L.T.V 〜ボルティービー〜!!"
+		text = "まもなく GIG TAKAHASHI tour 2020 〜ツアーファイナル 配信ライブ〜!!"
+		textTw = "まもなく GIG TAKAHASHI tour 2020 〜ツアーファイナル 配信ライブ〜!!"
 		out = generateTodayImage(selectRandomImage(), text)
 	} else {
-		text = fmt.Sprintf("2020/07/25\nB.O.L.T.V 〜ボルティービー〜まで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("2020/07/25 B.O.L.T.V 〜ボルティービー〜まで%s!!", countdownText(now))
+		text = fmt.Sprintf("2020/08/06\nGIG TAKAHASHI tour 2020\n〜ツアーファイナル 配信ライブ〜まで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("2020/08/06 GIG TAKAHASHI tour 2020 〜ツアーファイナル 配信ライブ〜まで%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
