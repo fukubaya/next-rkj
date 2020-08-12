@@ -26,5 +26,12 @@
     "topRight": {"x": 1180, "y": 513},
     "bottomLeft": {"x": 20, "y": 938},
     "bottomRight": {"x": 1180, "y": 938}
+  },
+  {
+    "path": "img/bolt-20200812-001.jpg",
+    "topLeft": {"x": 30, "y": 800},
+    "topRight": {"x": 1078, "y": 800},
+    "bottomLeft": {"x": 30, "y": 1448},
+    "bottomRight": {"x": 1078, "y": 1448}
   }
 ]
