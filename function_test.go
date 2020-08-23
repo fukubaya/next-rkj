@@ -116,7 +116,7 @@ func TestCountdownText2(t *testing.T) {
 func TestGenerateImage(t *testing.T) {
 	for i, imgInfo := range imageList {
 		t.Logf("%+v", imgInfo)
-		out := generateTodayImage(imgInfo, "2020/08/23\n1stアルバム『POP』発売記念\nインターネットサイン会まで\nあと 18 日")
+		out := generateTodayImage(imgInfo, "2020/08/29\n＠JAM ONLINE FESTIVAL 2020\nのステージまで\nあと 18 日")
 		f, err := os.Create(fmt.Sprintf("./output%02d.png", i))
 		if err != nil {
 			t.Errorf("failed to save file")
