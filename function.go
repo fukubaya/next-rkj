@@ -312,11 +312,11 @@ func main() {
 	var textTw string
 	if near {
 		text = "まもなく ＠JAM ONLINE FESTIVAL 2020\nのステージ!!"
-		textTw = "まもなく ＠JAM ONLINE FESTIVAL 2020のステージ!!"
+		textTw = "まもなく ＠ JAM ONLINE FESTIVAL 2020のステージ!!"
 		out = generateTodayImage(selectRandomImage(), text)
 	} else {
 		text = fmt.Sprintf("2020/08/29\n＠JAM ONLINE FESTIVAL 2020\nのステージまで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("2020/08/29 ＠JAM ONLINE FESTIVAL 2020のステージまで%s!!", countdownText(now))
+		textTw = fmt.Sprintf("2020/08/29 ＠ JAM ONLINE FESTIVAL 2020のステージまで%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
