@@ -147,12 +147,12 @@ func selectPOPSong(t time.Time) (SongInfo, string) {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 9, 13, 0, 0, 0, 0, jst)
+	return time.Date(2020, 9, 21, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 9, 13, 12, 0, 0, 0, jst)
+	return time.Date(2020, 9, 21, 12, 0, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -315,8 +315,8 @@ func main() {
 		textTw = "まもなく 1stアルバム『POP』発売記念 インターネットサイン会!!"
 		out = generateTodayImage(selectRandomImage(), text)
 	} else {
-		text = fmt.Sprintf("2020/09/13\n1stアルバム『POP』発売記念\nインターネットサイン会まで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("2020/09/13 1stアルバム『POP』発売記念 インターネットサイン会まで%s!!", countdownText(now))
+		text = fmt.Sprintf("2020/09/21\n「POP」ONE MAN LIVE@Zepp Tokyo\n開催記念インターネットサイン会まで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("2020/09/21 「POP」ONE MAN LIVE @ Zepp Tokyo開催記念インターネットサイン会まで%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
@@ -329,7 +329,7 @@ func main() {
 	// tweet
 	v := url.Values{}
 	v.Add("media_ids", media.MediaIDString)
-	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト #BOLTデマス", textTw)
+	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト #BOLTデマス #ZeppでBOLT", textTw)
 
 	tweet, err := api.PostTweet(tweetText, v)
 
