@@ -147,12 +147,12 @@ func selectPOPSong(t time.Time) (SongInfo, string) {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 10, 18, 0, 0, 0, 0, jst)
+	return time.Date(2020, 10, 22, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 10, 18, 15, 5, 0, 0, jst)
+	return time.Date(2020, 10, 22, 18, 30, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -311,12 +311,12 @@ func main() {
 	var text string
 	var textTw string
 	if near {
-		text = "まもなく\nギュウ農フェス 5th ANNIVERSARY 秋のSP2020！"
-		textTw = "まもなくギュウ農フェス 5th ANNIVERSARY 秋のSP2020！"
+		text = "まもなく\nB.O.L.T.V\n〜Zeppライブ振り返り特番〜！"
+		textTw = "まもなくB.O.L.T.V 〜Zeppライブ振り返り特番〜！"
 		out = generateTodayImage(selectRandomImage(), text)
 	} else {
-		text = fmt.Sprintf("2020/10/18\nギュウ農フェス 5th ANNIVERSARY\n秋のSP2020まで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("2020/10/18 ギュウ農フェス 5th ANNIVERSARY 秋のSP2020まで%s!!", countdownText(now))
+		text = fmt.Sprintf("2020/10/22\nB.O.L.T.V\n〜Zeppライブ振り返り特番〜まで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("2020/10/22 B.O.L.T.V 〜Zeppライブ振り返り特番〜まで%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
