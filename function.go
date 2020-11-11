@@ -152,7 +152,7 @@ func getTargetDate() time.Time {
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 11, 14, 15, 0, 0, 0, jst)
+	return time.Date(2020, 11, 14, 13, 0, 0, 0, jst)
 }
 
 func getNow() time.Time {
