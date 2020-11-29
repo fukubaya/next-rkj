@@ -147,12 +147,12 @@ func selectPOPSong(t time.Time) (SongInfo, string) {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 11, 29, 0, 0, 0, 0, jst)
+	return time.Date(2020, 12, 5, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2020, 11, 29, 12, 20, 0, 0, jst)
+	return time.Date(2020, 12, 5, 14, 0, 0, 0, jst)
 }
 
 func getNow() time.Time {
