@@ -147,12 +147,12 @@ func selectPOPSong(t time.Time) (SongInfo, string) {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2021, 1, 2, 0, 0, 0, 0, jst)
+	return time.Date(2021, 1, 9, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2021, 1, 2, 14, 45, 0, 0, jst)
+	return time.Date(2021, 1, 9, 13, 0, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -311,12 +311,12 @@ func main() {
 	var text string
 	var textTw string
 	if near {
-		text = "まもなく\nTOKYO IDOL PROJECT×@JAM\nニューイヤープレミアムパーティー2021のステージ！"
-		textTw = "まもなくTOKYO IDOL PROJECT×@ JAMニューイヤープレミアムパーティー2021のステージ！"
+		text = "まもなく\nTask have Funタイバンシリーズ\n「タスクフォースvol.1」のステージ！"
+		textTw = "まもなくTask have Funタイバンシリーズ「タスクフォースvol.1」のステージ！"
 		out = generateTodayImage(selectRandomImage(), text)
 	} else {
-		text = fmt.Sprintf("2021/01/02\nTOKYO IDOL PROJECT×@JAM\nニューイヤープレミアムパーティー2021のステージまで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("2021/01/02 TOKYO IDOL PROJECT×@ JAMニューイヤープレミアムパーティー2021のステージまで%s!!", countdownText(now))
+		text = fmt.Sprintf("2021/01/09\nTask have Funタイバンシリーズ\n「タスクフォースvol.1」のステージまで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("2021/01/09 Task have Funタイバンシリーズ「タスクフォースvol.1」のステージまで%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
