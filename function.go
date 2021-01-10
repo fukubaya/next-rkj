@@ -147,12 +147,12 @@ func selectPOPSong(t time.Time) (SongInfo, string) {
 
 func getTargetDate() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2021, 1, 9, 0, 0, 0, 0, jst)
+	return time.Date(2021, 1, 17, 0, 0, 0, 0, jst)
 }
 
 func getTargetDateTime() time.Time {
 	jst, _ := time.LoadLocation(location)
-	return time.Date(2021, 1, 9, 13, 0, 0, 0, jst)
+	return time.Date(2021, 1, 17, 17, 10, 0, 0, jst)
 }
 
 func getNow() time.Time {
@@ -311,12 +311,12 @@ func main() {
 	var text string
 	var textTw string
 	if near {
-		text = "まもなく\nTask have Funタイバンシリーズ\n「タスクフォースvol.1」のステージ！"
-		textTw = "まもなくTask have Funタイバンシリーズ「タスクフォースvol.1」のステージ！"
+		text = "まもなく\nNEO JAPONISM主催公演\n「KASSEN-合戦-」のステージ！"
+		textTw = "まもなくNEO JAPONISM主催公演「KASSEN-合戦-」のステージ！"
 		out = generateTodayImage(selectRandomImage(), text)
 	} else {
-		text = fmt.Sprintf("2021/01/09\nTask have Funタイバンシリーズ\n「タスクフォースvol.1」のステージまで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("2021/01/09 Task have Funタイバンシリーズ「タスクフォースvol.1」のステージまで%s!!", countdownText(now))
+		text = fmt.Sprintf("2021/01/17\nNEO JAPONISM主催公演\n「KASSEN-合戦-」のステージまで\n%s!!", countdownText(now))
+		textTw = fmt.Sprintf("2021/01/17 NEO JAPONISM主催公演「KASSEN-合戦-」のステージまで%s!!", countdownText(now))
 		out = generateTodayImage(selectRandomImage(), text)
 	}
 	// encode image to base64
