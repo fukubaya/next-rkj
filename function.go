@@ -18,8 +18,10 @@ import (
 	"math"
 	"math/big"
 	"math/rand"
+
 	"net/url"
 	"os"
+	"sort"
 	"strings"
 	"time"
 
@@ -35,9 +37,10 @@ const (
 )
 
 var (
-	imageList []ImageInfo
-	songsList []SongInfo
-	fontData  *truetype.Font
+	imageList  []ImageInfo
+	songsList  []SongInfo
+	eventsList []EventInfo
+	fontData   *truetype.Font
 )
 
 // Point struct
@@ -64,6 +67,62 @@ type SongInfo struct {
 	} `json:"link"`
 }
 
+// EventInfo struct
+type EventInfo struct {
+	Title string    `json:"title"`
+	Time  time.Time `json:"time"`
+}
+
+func (e EventInfo) IsZero() bool {
+	return e.Title == "" && e.Time.IsZero()
+}
+
+func (e EventInfo) DaysUntil(now time.Time) int {
+	// 時間より小さい単位を落とす
+	d := e.Time.Truncate(time.Hour).Add(-time.Duration(e.Time.Hour()) * time.Hour)
+
+	if now.After(d) {
+		return 0
+	}
+	h := int(d.Sub(now).Hours())
+	return (h / 24) + 1
+}
+
+func (e EventInfo) HoursUntil(now time.Time) int {
+	if now.After(e.Time) {
+		return 0
+	}
+	m := int(e.Time.Sub(now).Minutes())
+	// n時間30分前〜n-1時間30分前はn
+	return (m + 30) / 60
+}
+
+func (e EventInfo) NearTargetDateTime(now time.Time) bool {
+	s := e.Time.Sub(now).Seconds()
+	// 1分前から5分後まで
+	return s < 60 && s > -300
+}
+
+func (e EventInfo) GetCountdownText(now time.Time) (string, string) {
+	if e.NearTargetDateTime(now) {
+		return fmt.Sprintf("まもなく\n%s！", e.Title),
+			fmt.Sprintf("まもなく%s！", strings.Replace(strings.Replace(e.Title, "\n", " ", -1), "@", "@ ", -1))
+	}
+
+	var countdown string
+
+	hours := e.HoursUntil(now)
+	if hours <= 100 {
+		countdown = fmt.Sprintf("あと %d 時間", hours)
+	} else {
+		days := e.DaysUntil(now)
+		countdown = fmt.Sprintf("あと %d 日", days)
+	}
+
+	text := fmt.Sprintf("%s\n%sまで\n%s", e.Time.Format("2006/01/02"), e.Title, countdown)
+	return text, strings.Replace(strings.Replace(text, "\n", " ", -1), "@", "@ ", -1)
+}
+
 // PubSubMessage struct
 type PubSubMessage struct {
 	Data []byte `json:"data"`
@@ -72,6 +131,7 @@ type PubSubMessage struct {
 func init() {
 	loadImageList()
 	loadSongsList()
+	loadEventsList()
 	fontData = loadFont(fontFilePath)
 	initRand()
 }
@@ -97,6 +157,17 @@ func loadSongsList() {
 
 	dec := json.NewDecoder(f)
 	dec.Decode(&songsList)
+}
+
+func loadEventsList() {
+	f, _ := os.Open("events.json")
+	defer f.Close()
+
+	dec := json.NewDecoder(f)
+	dec.Decode(&eventsList)
+	sort.Slice(eventsList, func(i, j int) bool {
+		return eventsList[i].Time.Before(eventsList[j].Time)
+	})
 }
 
 func selectRandomImage() ImageInfo {
@@ -145,51 +216,19 @@ func selectPOPSong(t time.Time) (SongInfo, string) {
 	}
 }
 
-func getTargetDate() time.Time {
-	jst, _ := time.LoadLocation(location)
-	return time.Date(2021, 1, 17, 0, 0, 0, 0, jst)
-}
+func getTargetEvent(now time.Time) EventInfo {
+	for _, e := range eventsList {
+		if e.Time.After(now) {
+			return e
+		}
+	}
 
-func getTargetDateTime() time.Time {
-	jst, _ := time.LoadLocation(location)
-	return time.Date(2021, 1, 17, 17, 10, 0, 0, jst)
+	return EventInfo{}
 }
 
 func getNow() time.Time {
 	jst, _ := time.LoadLocation(location)
 	return time.Now().In(jst)
-}
-
-func daysUntil(from time.Time, to time.Time) int {
-	if from.After(to) {
-		return 0
-	}
-	h := int(to.Sub(from).Hours())
-	return (h / 24) + 1
-}
-
-func hoursUntil(from time.Time, to time.Time) int {
-	if from.After(to) {
-		return 0
-	}
-	m := int(to.Sub(from).Minutes())
-	// n時間30分前〜n-1時間30分前はn
-	return (m + 30) / 60
-}
-
-func nearTargetDateTime(from time.Time, to time.Time) bool {
-	s := to.Sub(from).Seconds()
-	// 1分前から5分後まで
-	return s < 60 && s > -300
-}
-
-func countdownText(from time.Time) string {
-	hours := hoursUntil(from, getTargetDateTime())
-	if hours <= 100 {
-		return fmt.Sprintf("あと %d 時間", hours)
-	}
-	days := daysUntil(from, getTargetDate())
-	return fmt.Sprintf("あと %d 日", days)
 }
 
 func loadImg(imgPath string) image.Image {
@@ -298,27 +337,17 @@ func Tweet(ctx context.Context, m PubSubMessage) error {
 
 func main() {
 	now := getNow()
-
-	hours := hoursUntil(now, getTargetDateTime())
-	near := nearTargetDateTime(now, getTargetDateTime())
+	event := getTargetEvent(now)
 
 	// 期限後は実行しない
-	if hours <= 0 && !near {
+	if event.IsZero() || event.HoursUntil(now) <= 0 && !event.NearTargetDateTime(now) {
 		return
 	}
 
-	var out image.Image
-	var text string
-	var textTw string
-	if near {
-		text = "まもなく\nNEO JAPONISM主催公演\n「KASSEN-合戦-」のステージ！"
-		textTw = "まもなくNEO JAPONISM主催公演「KASSEN-合戦-」のステージ！"
-		out = generateTodayImage(selectRandomImage(), text)
-	} else {
-		text = fmt.Sprintf("2021/01/17\nNEO JAPONISM主催公演\n「KASSEN-合戦-」のステージまで\n%s!!", countdownText(now))
-		textTw = fmt.Sprintf("2021/01/17 NEO JAPONISM主催公演「KASSEN-合戦-」のステージまで%s!!", countdownText(now))
-		out = generateTodayImage(selectRandomImage(), text)
-	}
+	// text, image
+	text, textTw := event.GetCountdownText(now)
+	out := generateTodayImage(selectRandomImage(), text)
+
 	// encode image to base64
 	encodeString := encodePng(out)
 
