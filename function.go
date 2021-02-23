@@ -29,11 +29,15 @@ import (
 	"github.com/golang/freetype/truetype"
 	"golang.org/x/image/font"
 	"golang.org/x/image/math/fixed"
+
+	"google.golang.org/api/option"
+	"google.golang.org/api/youtube/v3"
 )
 
 const (
-	location     = "Asia/Tokyo"
-	fontFilePath = "font/mplus-1p-bold.ttf"
+	location         = "Asia/Tokyo"
+	fontFilePath     = "font/mplus-1p-bold.ttf"
+	youtubeChannelId = "UCNsGYZjlivJYZdbxqrR-26g"
 )
 
 var (
@@ -71,6 +75,14 @@ type SongInfo struct {
 type EventInfo struct {
 	Title string    `json:"title"`
 	Time  time.Time `json:"time"`
+}
+
+// YouTubeInfo struct
+type YouTubeInfo struct {
+	Title           string
+	SubscriberCount int
+	VideoCount      int
+	ViewCount       int
 }
 
 func (e EventInfo) IsZero() bool {
@@ -400,4 +412,63 @@ func songMain() {
 	}
 
 	log.Println(tweet.Text)
+}
+
+// YouTube channel
+func TweetYouTubeChannel(ctx context.Context, m PubSubMessage) error {
+	youtubeMain()
+	return nil
+}
+
+func youtubeMain() {
+	now := getNow()
+
+	// tweet
+	youtubeInfo := getYouTubeInfo(youtubeChannelId)
+	tweetText := fmt.Sprintf(
+		"%s\n(%s)\nチャンネル登録者数:%d\n総視聴回数:%d\n公開動画数:%d\nhttps://www.youtube.com/channel/%s\n#BOLT #ボルト",
+		youtubeInfo.Title,
+		now.Format("2006年01月02日"),
+		youtubeInfo.SubscriberCount,
+		youtubeInfo.ViewCount,
+		youtubeInfo.VideoCount,
+		youtubeChannelId,
+	)
+
+	// api
+	api := getTwitterAPI()
+
+	// tweet
+	v := url.Values{}
+	tweet, err := api.PostTweet(tweetText, v)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	log.Println(tweet.Text)
+}
+
+func getYouTubeInfo(channelId string) YouTubeInfo {
+	ctx := context.Background()
+	service, err := youtube.NewService(ctx, option.WithAPIKey(os.Getenv("YOUTUBE_API_KEY")))
+	if err != nil {
+		log.Fatalf("Error creating YouTube client: %v", err)
+	}
+
+	call := service.Channels.List([]string{"id", "snippet", "statistics"}).Id(channelId).MaxResults(1)
+	response, err := call.Do()
+
+	if err != nil {
+		log.Fatalf("Error in retreiving from YouTube API: %#v", err)
+	}
+
+	ch := response.Items[0]
+
+	return YouTubeInfo{
+		Title:           ch.Snippet.Title,
+		SubscriberCount: int(ch.Statistics.SubscriberCount),
+		VideoCount:      int(ch.Statistics.VideoCount),
+		ViewCount:       int(ch.Statistics.ViewCount),
+	}
 }

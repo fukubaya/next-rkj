@@ -7,6 +7,9 @@ readonly ENTORY_POINT="Tweet"
 readonly TOPIC_SONG="daily-topic-song"
 readonly ENTORY_POINT_SONG="TweetSong"
 
+readonly TOPIC_YOUTUBE="daily-youtube"
+readonly ENTORY_POINT_YOUTUBE="TweetYouTubeChannel"
+
 gcloud beta functions deploy daily-tweet \
        --runtime go111 \
        --region "${REGION}" \
@@ -22,4 +25,12 @@ gcloud beta functions deploy daily-tweet-song \
        --trigger-resource "${TOPIC_SONG}" \
        --trigger-event google.pubsub.topic.publish \
        --entry-point "${ENTORY_POINT_SONG}" \
+       --env-vars-file .env.yaml
+
+gcloud beta functions deploy daily-youtube \
+       --runtime go111 \
+       --region "${REGION}" \
+       --trigger-resource "${TOPIC_YOUTUBE}" \
+       --trigger-event google.pubsub.topic.publish \
+       --entry-point "${ENTORY_POINT_YOUTUBE}" \
        --env-vars-file .env.yaml
