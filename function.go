@@ -365,7 +365,10 @@ func main() {
 
 	// upload media
 	api := getTwitterAPI()
-	media, _ := api.UploadMedia(encodeString)
+	media, err := api.UploadMedia(encodeString)
+	if err != nil {
+		log.Println(err)
+	}
 
 	// tweet
 	v := url.Values{}
