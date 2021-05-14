@@ -117,8 +117,8 @@ func (e EventInfo) NearTargetDateTime(now time.Time) bool {
 
 func (e EventInfo) GetCountdownText(now time.Time) (string, string) {
 	if e.NearTargetDateTime(now) {
-		return fmt.Sprintf("まもなく\n%s！", e.Title),
-			fmt.Sprintf("まもなく%s！", strings.Replace(strings.Replace(e.Title, "\n", " ", -1), "@", "@ ", -1))
+		return fmt.Sprintf("%s！", e.Title),
+			fmt.Sprintf("%s！", strings.Replace(strings.Replace(e.Title, "\n", " ", -1), "@", "@ ", -1))
 	}
 
 	var countdown string
