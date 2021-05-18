@@ -349,7 +349,9 @@ func Tweet(ctx context.Context, m PubSubMessage) error {
 
 func main() {
 	now := getNow()
-	event := getTargetEvent(now)
+
+	// 現在から5分前まで
+	event := getTargetEvent(now.Add(-time.Duration(5) * time.Minute))
 
 	// 期限後は実行しない
 	if event.IsZero() || event.HoursUntil(now) <= 0 && !event.NearTargetDateTime(now) {
