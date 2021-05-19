@@ -35,9 +35,11 @@ import (
 )
 
 const (
-	location         = "Asia/Tokyo"
-	fontFilePath     = "font/mplus-1p-bold.ttf"
-	youtubeChannelId = "UCNsGYZjlivJYZdbxqrR-26g"
+	location                   = "Asia/Tokyo"
+	fontFilePath               = "font/mplus-1p-bold.ttf"
+	youtubeChannelId           = "UCNsGYZjlivJYZdbxqrR-26g"
+	uploadImageRetryCount  int = 3
+	uploadImageRetrySecond int = 30
 )
 
 var (
@@ -337,6 +339,22 @@ func calcFontSize(imgInfo ImageInfo, text string, n int) int {
 	return 200
 }
 
+func uploadImage(api *anaconda.TwitterApi, imgString string) (anaconda.Media, error) {
+	var media anaconda.Media
+	var err error
+
+	for i := 0; i < uploadImageRetryCount; i++ {
+		media, err = api.UploadMedia(imgString)
+		if err != nil {
+			log.Println(err)
+			time.Sleep(time.Second * uploadImageRetrySecond)
+		} else {
+			return media, err
+		}
+	}
+	return media, err
+}
+
 // Tweet daily comment
 func Tweet(ctx context.Context, m PubSubMessage) error {
 	loadImageList()
@@ -367,10 +385,7 @@ func main() {
 
 	// upload media
 	api := getTwitterAPI()
-	media, err := api.UploadMedia(encodeString)
-	if err != nil {
-		log.Println(err)
-	}
+	media, err := uploadImage(api, encodeString)
 
 	// tweet
 	v := url.Values{}
