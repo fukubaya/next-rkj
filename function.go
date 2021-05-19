@@ -347,7 +347,7 @@ func uploadImage(api *anaconda.TwitterApi, imgString string) (anaconda.Media, er
 		media, err = api.UploadMedia(imgString)
 		if err != nil {
 			log.Println(err)
-			time.Sleep(time.Second * uploadImageRetrySecond)
+			time.Sleep(time.Second * time.Duration(uploadImageRetrySecond))
 		} else {
 			return media, err
 		}
