@@ -168,10 +168,10 @@ func TestCountdownText3(t *testing.T) {
 
 	e := getTestTargetEvent()
 	text, textTw := e.GetCountdownText(now)
-	if text != "まもなく\n1行目\n2行目\n@3行目！" {
+	if text != "1行目\n2行目\n@3行目！" {
 		t.Errorf("text=%s", text)
 	}
-	if textTw != "まもなく1行目 2行目 @ 3行目！" {
+	if textTw != "1行目 2行目 @ 3行目！" {
 		t.Errorf("textTw=%s", text)
 	}
 }
