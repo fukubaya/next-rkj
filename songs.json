@@ -131,5 +131,47 @@
       "spotify": "https://open.spotify.com/track/4dXj2ulXdxfFOVU7CqAutU",
       "apple": "https://music.apple.com/jp/album/axis-single/1517739401"
     }
+  },
+  {
+    "title": "Don't Blink",
+    "link": {
+      "spotify": "https://open.spotify.com/track/1i1KVoKUeP1LaJO9vF2GSn?si=dc45cb18af304637",
+      "apple": "https://music.apple.com/jp/album/dont-blink/1541778979?i=1541778980"
+    }
+  },
+  {
+    "title": "淡い空",
+    "link": {
+      "spotify": "https://open.spotify.com/track/1FzuIpHKUVBCD3AiR0P660?si=9614cebb16fc4107",
+      "apple": "https://music.apple.com/jp/album/%E6%B7%A1%E3%81%84%E7%A9%BA/1541778979?i=1541778981"
+    }
+  },
+  {
+    "title": "SLEEPY BUSTERS (Group2 Remix)",
+    "link": {
+      "spotify": "https://open.spotify.com/track/14znPMrqhRxFzYepGAowpI?si=90d4afd10e294e1f",
+      "apple": "https://music.apple.com/jp/album/sleepy-busters-group2-remix/1541778979?i=1541778982"
+    }
+  },
+  {
+    "title": "わたし色のトビラ (Reverse Remix)",
+    "link": {
+      "spotify": "https://open.spotify.com/track/6nJUGCnwBUgLj7coIlcsA1?si=7f6c508149ac4eeb",
+      "apple": "https://music.apple.com/jp/album/%E3%82%8F%E3%81%9F%E3%81%97%E8%89%B2%E3%81%AE%E3%83%88%E3%83%93%E3%83%A9-reverse-remix/1541778979?i=1541778983"
+    }
+  },
+  {
+    "title": "スマイルフラワー",
+    "link": {
+      "spotify": "https://open.spotify.com/track/1A15it3AgzGwCpxmJDpYPO?si=7d03d4034db148a7",
+      "apple": "https://music.apple.com/jp/album/%E3%82%B9%E3%83%9E%E3%82%A4%E3%83%AB%E3%83%95%E3%83%A9%E3%83%AF%E3%83%BC/1564402119?i=1564402120"
+    }
+  },
+  {
+    "title": "OUR COLOR",
+    "link": {
+      "spotify": "https://open.spotify.com/track/6Jvt5TxeZ6seEGmQdFtdpY?si=b7d6fa9a997e40da",
+      "apple": "https://music.apple.com/jp/album/our-color/1564402119?i=1564402122"
+    }
   }
 ]
