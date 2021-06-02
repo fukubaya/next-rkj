@@ -374,12 +374,13 @@ func TweetSong(ctx context.Context, m PubSubMessage) error {
 
 func songMain() {
 	// select random song
+	now := getNow()
 	song := selectRandomSong()
 
 	// tweet
 	tweetText := fmt.Sprintf(
-		"今日の1曲: %s\n%s\n%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト",
-		song.Title, song.Link.Apple, song.Link.Spotify)
+		"%d時の1曲: %s\n%s\n%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト",
+		now.Hour(), song.Title, song.Link.Apple, song.Link.Spotify)
 
 	// api
 	api := getTwitterAPI()
