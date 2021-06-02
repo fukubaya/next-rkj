@@ -46,6 +46,7 @@ var (
 	imageList  []ImageInfo
 	songsList  []SongInfo
 	eventsList []EventInfo
+	colorList  = [...]color.RGBA{{215, 46, 42, 255}, {151, 95, 162, 255}, {254, 246, 155, 255}, {11, 83, 148, 255}}
 	fontData   *truetype.Font
 )
 
@@ -188,6 +189,10 @@ func selectRandomImage() ImageInfo {
 	return imageList[rand.Intn(len(imageList))]
 }
 
+func selectRandomColor() color.RGBA {
+	return colorList[rand.Intn(len(colorList))]
+}
+
 func selectRandomSong() SongInfo {
 	return songsList[rand.Intn(len(songsList))]
 }
@@ -269,11 +274,12 @@ func generateTodayImage(imgInfo ImageInfo, text string) image.Image {
 		Size: fontsize,
 	}
 	lineHeight := (imgInfo.BottomLeft.Y - imgInfo.TopLeft.Y) / len(lines)
+	color := selectRandomColor()
 	for i, l := range lines {
 		face := truetype.NewFace(fontData, &opt)
 		dr := &font.Drawer{
 			Dst:  out,
-			Src:  image.NewUniform(color.RGBA{215, 46, 42, 255}),
+			Src:  image.NewUniform(color),
 			Face: face,
 			Dot:  fixed.Point26_6{},
 		}
