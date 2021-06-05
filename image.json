@@ -348,5 +348,19 @@
     "topRight": {"x": 1005, "y": 15},
     "bottomLeft": {"x": 15, "y": 308},
     "bottomRight": {"x": 1005, "y": 308}
+  },
+  {
+    "path": "img/bolt-20210518-001.jpg",
+    "topLeft": {"x": 25, "y": 548},
+    "topRight": {"x": 1453, "y": 548},
+    "bottomLeft": {"x": 25, "y": 1083},
+    "bottomRight": {"x": 1453, "y": 1083}
+  },
+  {
+    "path": "img/bolt-20210519-002.jpg",
+    "topLeft": {"x": 25, "y": 510},
+    "topRight": {"x": 1453, "y": 510},
+    "bottomLeft": {"x": 25, "y": 1083},
+    "bottomRight": {"x": 1453, "y": 1083}
   }
 ]
