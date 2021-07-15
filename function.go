@@ -46,6 +46,7 @@ var (
 	imageList  []ImageInfo
 	songsList  []SongInfo
 	eventsList []EventInfo
+	tour       TourInfo
 	colorList  = [...]color.RGBA{{215, 46, 42, 255}, {151, 95, 162, 255}, {254, 246, 155, 255}, {11, 83, 148, 255}}
 	fontData   *truetype.Font
 )
@@ -78,6 +79,12 @@ type SongInfo struct {
 type EventInfo struct {
 	Title string    `json:"title"`
 	Time  time.Time `json:"time"`
+}
+
+// TourInfo struct
+type TourInfo struct {
+	Title  string      `json:"title"`
+	Events []EventInfo `json:"events"`
 }
 
 // YouTubeInfo struct
@@ -138,6 +145,40 @@ func (e EventInfo) GetCountdownText(now time.Time) (string, string) {
 	return text, strings.Replace(strings.Replace(text, "\n", " ", -1), "@", "@ ", -1)
 }
 
+func (t TourInfo) Finished(now time.Time) bool {
+	return len(t.Remained(now)) == 0
+}
+
+func (t TourInfo) GetCountdownText(now time.Time) (string, string) {
+	texts := make([]string, 0, len(t.Events)+1)
+	texts = append(texts, t.Title)
+
+	for _, e := range t.Remained(now) {
+		var countdown string
+
+		hours := e.HoursUntil(now)
+		if hours <= 100 {
+			countdown = fmt.Sprintf("%d時間", hours)
+		} else {
+			days := e.DaysUntil(now)
+			countdown = fmt.Sprintf("%d日", days)
+		}
+		texts = append(texts, fmt.Sprintf("%s %sまで%s", e.Time.Format("2006/01/02"), e.Title, countdown))
+	}
+	text := strings.Join(texts, "\n")
+	return text, strings.Replace(text, "@", "@ ", -1)
+}
+
+func (t TourInfo) Remained(now time.Time) []EventInfo {
+	filtered := make([]EventInfo, 0, len(t.Events))
+	for _, e := range t.Events {
+		if e.Time.After(now) {
+			filtered = append(filtered, e)
+		}
+	}
+	return filtered
+}
+
 // PubSubMessage struct
 type PubSubMessage struct {
 	Data []byte `json:"data"`
@@ -147,6 +188,7 @@ func init() {
 	loadImageList()
 	loadSongsList()
 	loadEventsList()
+	loadTourEventsList()
 	fontData = loadFont(fontFilePath)
 	initRand()
 }
@@ -182,6 +224,17 @@ func loadEventsList() {
 	dec.Decode(&eventsList)
 	sort.Slice(eventsList, func(i, j int) bool {
 		return eventsList[i].Time.Before(eventsList[j].Time)
+	})
+}
+
+func loadTourEventsList() {
+	f, _ := os.Open("tour_events.json")
+	defer f.Close()
+
+	dec := json.NewDecoder(f)
+	dec.Decode(&tour)
+	sort.Slice(tour.Events, func(i, j int) bool {
+		return tour.Events[i].Time.Before(tour.Events[j].Time)
 	})
 }
 
@@ -328,12 +381,12 @@ func Tweet(ctx context.Context, m PubSubMessage) error {
 	loadImageList()
 	initRand()
 	fontData = loadFont(fontFilePath)
-	main()
+	tweetMain()
 	return nil
 
 }
 
-func main() {
+func tweetMain() {
 	now := getNow()
 
 	// 現在から5分前まで
@@ -459,4 +512,45 @@ func getYouTubeInfo(channelId string) YouTubeInfo {
 		VideoCount:      int(ch.Statistics.VideoCount),
 		ViewCount:       int(ch.Statistics.ViewCount),
 	}
+}
+
+func TweetFirstTour(ctx context.Context, m PubSubMessage) error {
+	loadImageList()
+	initRand()
+	fontData = loadFont(fontFilePath)
+	firstTourMain()
+	return nil
+}
+
+func firstTourMain() {
+	now := getNow()
+
+	// 期限後は実行しない
+	if tour.Finished(now) {
+		return
+	}
+
+	// text, image
+	text, textTw := tour.GetCountdownText(now)
+	out := generateTodayImage(selectRandomImage(), text)
+
+	// encode image to base64
+	encodeString := encodePng(out)
+
+	// upload media
+	api := getTwitterAPI()
+	media, err := uploadImage(api, encodeString)
+
+	// tweet
+	v := url.Values{}
+	v.Add("media_ids", media.MediaIDString)
+	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト #BOLTデマス", textTw)
+
+	tweet, err := api.PostTweet(tweetText, v)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	log.Println(tweet.Text)
 }
