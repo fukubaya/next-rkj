@@ -201,5 +201,82 @@
       "spotify": "https://open.spotify.com/track/6up6KV4Yj7brICaSI3Ij2U?si=9b41815c087c47fa",
       "apple": "https://music.apple.com/jp/album/please-together/1579455626?i=1579455627"
     }
+  },
+  {
+    "title": "スマイルフラワー",
+    "link": {
+      "spotify": "https://open.spotify.com/track/4xFDkZeouGtFT16WXar6s3?si=99b410e54e334581",
+      "apple": "https://music.apple.com/jp/album/%E3%82%B9%E3%83%9E%E3%82%A4%E3%83%AB%E3%83%95%E3%83%A9%E3%83%AF%E3%83%BC/1580672390?i=1580672391"
+    }
+  },
+  {
+    "title": "まわりみち",
+    "link": {
+      "spotify": "https://open.spotify.com/track/6KrKOqrkRWFFqGCARXiadv?si=3e9f0fdf031b4f8d",
+      "apple": "https://music.apple.com/jp/album/%E3%81%BE%E3%82%8F%E3%82%8A%E3%81%BF%E3%81%A1/1580672390?i=1580672392"
+    }
+  },
+  {
+    "title": "Catch The Rainbow",
+    "link": {
+      "spotify": "https://open.spotify.com/track/4ImuchiNxFrtdSIJvQIZg4?si=c6a90a10303c492e",
+      "apple": "https://music.apple.com/jp/album/catch-the-rainbow/1580672390?i=1580672393"
+    }
+  },
+  {
+    "title": "USHIRO-META-I",
+    "link": {
+      "spotify": "https://open.spotify.com/track/52fRwfS0QzKA4Ig1h5IKbF?si=11867255fce8412f",
+      "apple": "https://music.apple.com/jp/album/ushiro-meta-i/1580672390?i=1580672394"
+    }
+  },
+  {
+    "title": "Yummy!",
+    "link": {
+      "spotify": "https://open.spotify.com/track/4ZXsetyvsxFf59DuEtQB8k?si=ac5a4117d5df4ad0",
+      "apple": "https://music.apple.com/jp/album/yummy/1580672390?i=1580672395"
+    }
+  },
+  {
+    "title": "Don't Blink",
+    "link": {
+      "spotify": "https://open.spotify.com/track/2Z5NDjPC1PJGjBXnsZA3pf?si=6f405dec7d384b30",
+      "apple": "https://music.apple.com/jp/album/dont-blink/1580672390?i=1580672396"
+    }
+  },
+  {
+    "title": "JUST NOD",
+    "link": {
+      "spotify": "https://open.spotify.com/track/719UnSc2aSk1flCEKoBKHQ?si=50f3829d331b43ef",
+      "apple": "https://music.apple.com/jp/album/just-nod/1580672390?i=1580672397"
+    }
+  },
+  {
+    "title": "未完成呼吸",
+    "link": {
+      "spotify": "https://open.spotify.com/track/6gRw3puunxR2Y2LHYiBTCv?si=9963161958c3459e",
+      "apple": "https://music.apple.com/jp/album/%E6%9C%AA%E5%AE%8C%E6%88%90%E5%91%BC%E5%90%B8/1580672390?i=1580672399"
+    }
+  },
+  {
+    "title": "Hear You",
+    "link": {
+      "spotify": "https://open.spotify.com/track/1QwNI4ADbQKfLNFKdaus0o?si=db7fcd4d09d54549",
+      "apple": "https://music.apple.com/jp/album/hear-you/1580672390?i=1580672400"
+    }
+  },
+  {
+    "title": "Please Together",
+    "link": {
+      "spotify": "https://open.spotify.com/track/7cIIO3IiUPsa4yxT91JHO5?si=b86c9d398a71437c",
+      "apple": "https://music.apple.com/jp/album/please-together/1580672390?i=1580672401"
+    }
+  },
+  {
+    "title": "HOT CAKE",
+    "link": {
+      "spotify": "https://open.spotify.com/track/6SvvpWMIwh9e5vCss3WYK4?si=61e10c12564940ae",
+      "apple": "https://music.apple.com/jp/album/hot-cake/1580672390?i=1580672403"
+    }
   }
 ]
