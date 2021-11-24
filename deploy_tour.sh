@@ -4,8 +4,8 @@ readonly REGION="asia-northeast1"
 readonly TOPIC_TOUR="daily-tour"
 readonly ENTORY_POINT_TOUR="TweetFirstTour"
 
-gcloud beta functions deploy daily-tour \
-       --runtime go111 \
+gcloud functions deploy daily-tour \
+       --runtime go113 \
        --region "${REGION}" \
        --trigger-resource "${TOPIC_TOUR}" \
        --trigger-event google.pubsub.topic.publish \
