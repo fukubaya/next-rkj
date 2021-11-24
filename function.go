@@ -10,8 +10,8 @@ import (
 	"image"
 	"image/color"
 	"image/draw"
+	"image/jpeg"
 	_ "image/jpeg"
-	"image/png"
 	_ "image/png"
 	"io/ioutil"
 	"log"
@@ -289,9 +289,9 @@ func loadFont(ttfPath string) *truetype.Font {
 	return ft
 }
 
-func encodePng(img image.Image) string {
+func encodeJpg(img image.Image) string {
 	var buff bytes.Buffer
-	png.Encode(&buff, img)
+	jpeg.Encode(&buff, img, &jpeg.Options{Quality: 80})
 	return base64.StdEncoding.EncodeToString(buff.Bytes())
 }
 
@@ -402,7 +402,7 @@ func tweetMain() {
 	out := generateTodayImage(selectRandomImage(), text)
 
 	// encode image to base64
-	encodeString := encodePng(out)
+	encodeString := encodeJpg(out)
 
 	// upload media
 	api := getTwitterAPI()
@@ -535,7 +535,7 @@ func firstTourMain() {
 	out := generateTodayImage(selectRandomImage(), text)
 
 	// encode image to base64
-	encodeString := encodePng(out)
+	encodeString := encodeJpg(out)
 
 	// upload media
 	api := getTwitterAPI()

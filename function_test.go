@@ -2,7 +2,7 @@ package function
 
 import (
 	"fmt"
-	"image/png"
+	"image/jpeg"
 	_ "image/png"
 	"os"
 	"testing"
@@ -195,11 +195,11 @@ func TestGenerateImage(t *testing.T) {
 		t.Logf("%+v", imgInfo)
 
 		out := generateTodayImage(imgInfo, text)
-		f, err := os.Create(fmt.Sprintf("./output%02d.png", i))
+		f, err := os.Create(fmt.Sprintf("./output%02d.jpg", i))
 		if err != nil {
 			t.Errorf("failed to save file")
 		}
-		png.Encode(f, out)
+		jpeg.Encode(f, out, &jpeg.Options{Quality: 80})
 	}
 }
 
