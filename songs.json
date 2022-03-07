@@ -278,5 +278,19 @@
       "spotify": "https://open.spotify.com/track/6SvvpWMIwh9e5vCss3WYK4?si=61e10c12564940ae",
       "apple": "https://music.apple.com/jp/album/hot-cake/1580672390?i=1580672403"
     }
+  },
+  {
+    "title": "More Fantastic",
+    "link": {
+      "spotify": "https://open.spotify.com/track/4lMR3vGjTY5sE6xOpGSSIQ?si=0521edb0e65f4acd",
+      "apple": "https://music.apple.com/jp/album/more-fantastic/1592216055?i=1592216056"
+    }
+  },
+  {
+    "title": "Reborn",
+    "link": {
+      "spotify": "https://open.spotify.com/track/5DBe1ryseELPtTEQgGykxA?si=7de364733fa54969",
+      "apple": "https://music.apple.com/jp/album/reborn/1598308624?i=1598308867"
+    }
   }
 ]
