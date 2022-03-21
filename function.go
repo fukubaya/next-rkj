@@ -514,15 +514,15 @@ func getYouTubeInfo(channelId string) YouTubeInfo {
 	}
 }
 
-func TweetFirstTour(ctx context.Context, m PubSubMessage) error {
+func TweetTour(ctx context.Context, m PubSubMessage) error {
 	loadImageList()
 	initRand()
 	fontData = loadFont(fontFilePath)
-	firstTourMain()
+	tourMain()
 	return nil
 }
 
-func firstTourMain() {
+func tourMain() {
 	now := getNow()
 
 	// 期限後は実行しない

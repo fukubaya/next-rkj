@@ -2,7 +2,7 @@
 
 readonly REGION="asia-northeast1"
 readonly TOPIC_TOUR="daily-tour"
-readonly ENTORY_POINT_TOUR="TweetFirstTour"
+readonly ENTORY_POINT_TOUR="TweetTour"
 
 gcloud functions deploy daily-tour \
        --runtime go113 \
