@@ -18,7 +18,9 @@ import (
 	"math"
 	"math/big"
 	"math/rand"
+	"strconv"
 
+	"net/http"
 	"net/url"
 	"os"
 	"sort"
@@ -26,6 +28,7 @@ import (
 	"time"
 
 	"github.com/ChimeraCoder/anaconda"
+	"github.com/PuerkitoBio/goquery"
 	"github.com/golang/freetype/truetype"
 	"golang.org/x/image/font"
 	"golang.org/x/image/math/fixed"
@@ -93,6 +96,26 @@ type YouTubeInfo struct {
 	SubscriberCount int
 	VideoCount      int
 	ViewCount       int
+}
+
+// YahooAPIResult - リアルタイム検索の結果
+type YahooAPIResult struct {
+	TweetTransition struct {
+		Head struct {
+			TotalResultsAvailable   int `json:"totalResultsAvailable"`
+			RecommendedSamplingRate int `json:"recommendedSamplingRate"`
+		} `json:"head"`
+		Entry []struct {
+			From  int `json:"from"`
+			To    int `json:"to"`
+			Count int `json:"count"`
+		}
+	} `json:"tweetTransition"`
+	SentimentPieChart struct {
+		ShouldRender bool `json:"shouldRender"`
+		Positive     int  `json:"positive"`
+		Negative     int  `json:"negative"`
+	} `json:"sentimentPieChart"`
 }
 
 func (e EventInfo) IsZero() bool {
@@ -177,6 +200,121 @@ func (t TourInfo) Remained(now time.Time) []EventInfo {
 		}
 	}
 	return filtered
+}
+
+func extractQueryParams(from, to time.Time, keyword string) (string, map[string]interface{}, error) {
+	pageURL := fmt.Sprintf("https://search.yahoo.co.jp/realtime/search?p=%s&samplingRate=100&since=%d&until=%d&gm=m",
+		url.QueryEscape(keyword),
+		from.Unix(),
+		to.Unix())
+	doc, err := goquery.NewDocument(pageURL)
+	if err != nil {
+		return "", nil, err
+	}
+	var params map[string]interface{}
+	doc.Find("script").Each(func(i int, s *goquery.Selection) {
+		var data map[string]interface{}
+		if err := json.Unmarshal([]byte(s.Text()), &data); err == nil {
+			if p, exist := getValues(data, "props", "pageProps", "pageData", "pagination", "params"); exist {
+				params = p
+			}
+		}
+	})
+	return pageURL, params, nil
+}
+
+func queryYahooAPI(params map[string]interface{}) (YahooAPIResult, error) {
+	apiURL := buildAPIURL(params)
+	client := &http.Client{}
+
+	res, err := client.Get(apiURL)
+	if err != nil {
+		return YahooAPIResult{}, err
+	}
+	defer res.Body.Close()
+
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return YahooAPIResult{}, err
+	}
+
+	var apiResult YahooAPIResult
+	if err := json.Unmarshal(body, &apiResult); err != nil {
+		return YahooAPIResult{}, err
+	}
+
+	return apiResult, nil
+}
+
+func generateBolt897Tweet(from, to time.Time, keyword, pageURL string, result YahooAPIResult) string {
+	count := 0
+	resultFrom := to.Add(time.Duration(24) * time.Hour)
+	resultTo := from.Add(-time.Duration(24) * time.Hour)
+	for _, e := range result.TweetTransition.Entry {
+		f := time.Unix(int64(e.From), 0)
+		t := time.Unix(int64(e.To), 0)
+
+		if t.After(from) && f.Before(to) {
+			if f.Before(resultFrom) {
+				resultFrom = f
+			}
+			if t.After(resultTo) {
+				resultTo = t
+			}
+			count += e.Count
+		}
+	}
+
+	jst, _ := time.LoadLocation(location)
+	return fmt.Sprintf("%s〜%s の %s のツイート数: %d\n%s",
+		resultFrom.In(jst).Format("2006/01/02 15:04"),
+		resultTo.In(jst).Format("2006/01/02 15:04"),
+		keyword,
+		count,
+		pageURL)
+}
+
+func getMap(key string, m map[string]interface{}) (map[string]interface{}, bool) {
+	v, exist := m[key]
+	if exist {
+		return v.(map[string]interface{}), exist
+	}
+	return nil, false
+}
+
+func getValues(m map[string]interface{}, keys ...string) (map[string]interface{}, bool) {
+	if len(keys) == 0 {
+		return m, true
+	}
+	v, exist := getMap(keys[0], m)
+	if !exist {
+		return nil, false
+	}
+	return getValues(v, keys[1:len(keys)]...)
+}
+
+func buildAPIURL(params map[string]interface{}) string {
+	p := params["p"].(string)
+	crumb := params["crumb"].(string)
+	rkf := int(params["rkf"].(float64))
+	b := int(params["b"].(float64))
+	interval := 86400
+	since, _ := strconv.Atoi(params["since"].(string))
+	until, _ := strconv.Atoi(params["until"].(string))
+	span := 30 * 24 * 3600
+
+	v := url.Values{}
+	v.Add("p", p)
+	v.Add("crumb", crumb)
+	v.Add("rkf", strconv.Itoa(rkf))
+	v.Add("b", strconv.Itoa(b))
+	v.Add("interval", strconv.Itoa(interval))
+	v.Add("span", strconv.Itoa(span))
+	v.Add("samplingRate", "100")
+	v.Add("sentimentSince", strconv.Itoa(since))
+	v.Add("sentimentUntil", strconv.Itoa(until))
+	url := fmt.Sprintf("https://search.yahoo.co.jp/realtime/api/v1/transition?%s", v.Encode())
+	return url
 }
 
 // PubSubMessage struct
@@ -553,4 +691,50 @@ func tourMain() {
 	}
 
 	log.Println(tweet.Text)
+}
+
+func TweetBolt897(ctx context.Context, m PubSubMessage) error {
+	return bolt897Main()
+}
+
+func bolt897Main() error {
+	now := getNow()
+
+	// 次の日(JST)
+	tomorrow := now.Add(time.Duration(24) * time.Hour)
+	// 次の日の0時(JST)
+	to := tomorrow.Truncate(time.Hour).Add(-time.Duration(tomorrow.Hour()) * time.Hour)
+	// 今月1日の0時(JST)
+	from := to.Add(-time.Duration(24*(to.Day()-1)) * time.Hour)
+
+	// 検索対象
+	keyword := "#BOLT897"
+
+	// APIのパラメータを抽出する
+	pageURL, params, err := extractQueryParams(from, to, keyword)
+	if err != nil {
+		return err
+	}
+
+	// APIからツイート数を取得する
+	apiResult, err := queryYahooAPI(params)
+	if err != nil {
+		return err
+	}
+
+	// テキストを生成
+	text := generateBolt897Tweet(from, to, keyword, pageURL, apiResult)
+
+	// tweet
+	api := getTwitterAPI()
+	v := url.Values{}
+	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト", text)
+	tweet, err := api.PostTweet(tweetText, v)
+
+	if err != nil {
+		return err
+	}
+
+	log.Println(tweet.Text)
+	return nil
 }
