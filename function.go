@@ -707,6 +707,12 @@ func bolt897Main() error {
 	// 今月1日の0時(JST)
 	from := to.Add(-time.Duration(24*(to.Day()-1)) * time.Hour)
 
+	// 次の日が1日だとfromとtoが同じになるので、fromを前月の1日にする
+	if to.Day() == 1 {
+		prev1day := to.Add(-time.Duration(24) * time.Hour)
+		from = to.Add(-time.Duration(24*(prev1day.Day()-1)) * time.Hour)
+	}
+
 	// 検索対象
 	keyword := "#BOLT897"
 
