@@ -50,6 +50,7 @@ var (
 	songsList  []SongInfo
 	eventsList []EventInfo
 	tour       TourInfo
+	last       LastInfo
 	colorList  = [...]color.RGBA{{215, 46, 42, 255}, {151, 95, 162, 255}, {254, 246, 155, 255}, {11, 83, 148, 255}}
 	fontData   *truetype.Font
 )
@@ -88,6 +89,10 @@ type EventInfo struct {
 type TourInfo struct {
 	Title  string      `json:"title"`
 	Events []EventInfo `json:"events"`
+}
+
+type LastInfo struct {
+	Event EventInfo `json:"event"`
 }
 
 // YouTubeInfo struct
@@ -200,6 +205,10 @@ func (t TourInfo) Remained(now time.Time) []EventInfo {
 		}
 	}
 	return filtered
+}
+
+func (l LastInfo) Finished(now time.Time) bool {
+	return now.After(l.Event.Time)
 }
 
 func extractQueryParams(from, to time.Time, keyword string) (string, map[string]interface{}, error) {
@@ -327,6 +336,7 @@ func init() {
 	loadSongsList()
 	loadEventsList()
 	loadTourEventsList()
+	loadLastEvent()
 	fontData = loadFont(fontFilePath)
 	initRand()
 }
@@ -374,6 +384,14 @@ func loadTourEventsList() {
 	sort.Slice(tour.Events, func(i, j int) bool {
 		return tour.Events[i].Time.Before(tour.Events[j].Time)
 	})
+}
+
+func loadLastEvent() {
+	f, _ := os.Open("last_event.json")
+	defer f.Close()
+
+	dec := json.NewDecoder(f)
+	dec.Decode(&last)
 }
 
 func selectRandomImage() ImageInfo {
@@ -691,6 +709,48 @@ func tourMain() {
 	}
 
 	log.Println(tweet.Text)
+}
+
+func TweetLast(ctx context.Context, m PubSubMessage) error {
+	loadImageList()
+	initRand()
+	fontData = loadFont(fontFilePath)
+	lastMain()
+	return nil
+}
+
+func lastMain() {
+	now := getNow()
+
+	// 期限後は実行しない
+	if last.Finished(now) {
+		return
+	}
+
+	// text, image
+	text, textTw := last.Event.GetCountdownText(now)
+	out := generateTodayImage(selectRandomImage(), text)
+
+	// encode image to base64
+	encodeString := encodeJpg(out)
+
+	// upload media
+	api := getTwitterAPI()
+	media, err := uploadImage(api, encodeString)
+
+	// tweet
+	v := url.Values{}
+	v.Add("media_ids", media.MediaIDString)
+	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト #BOLTデマス", textTw)
+
+	tweet, err := api.PostTweet(tweetText, v)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	log.Println(tweet.Text)
+
 }
 
 func TweetBolt897(ctx context.Context, m PubSubMessage) error {

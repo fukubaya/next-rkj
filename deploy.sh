@@ -14,7 +14,7 @@ readonly TOPIC_BOLT897="daily-bolt897"
 readonly ENTORY_POINT_BOLT897="TweetBolt897"
 
 gcloud functions deploy daily-tweet \
-       --runtime go113 \
+       --runtime go116 \
        --region "${REGION}" \
        --trigger-resource "${TOPIC}" \
        --trigger-event google.pubsub.topic.publish \
@@ -22,7 +22,7 @@ gcloud functions deploy daily-tweet \
        --env-vars-file .env.yaml
 
 gcloud functions deploy daily-tweet-song \
-       --runtime go113 \
+       --runtime go116 \
        --region "${REGION}" \
        --trigger-resource "${TOPIC_SONG}" \
        --trigger-event google.pubsub.topic.publish \
@@ -30,7 +30,7 @@ gcloud functions deploy daily-tweet-song \
        --env-vars-file .env.yaml
 
 gcloud functions deploy daily-youtube \
-       --runtime go113 \
+       --runtime go116 \
        --region "${REGION}" \
        --trigger-resource "${TOPIC_YOUTUBE}" \
        --trigger-event google.pubsub.topic.publish \
@@ -38,7 +38,7 @@ gcloud functions deploy daily-youtube \
        --env-vars-file .env.yaml
 
 gcloud functions deploy daily-bolt897 \
-       --runtime go113 \
+       --runtime go116 \
        --region "${REGION}" \
        --trigger-resource "${TOPIC_BOLT897}" \
        --trigger-event google.pubsub.topic.publish \

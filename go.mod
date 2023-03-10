@@ -11,8 +11,9 @@ require (
 	github.com/garyburd/go-oauth v0.0.0-20180319155456-bca2e7f09a17 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 	golang.org/x/image v0.0.0-20190802002840-cff245a6509b
-	golang.org/x/net v0.0.0-20210916014120-12bc252f5db8
+	golang.org/x/net v0.0.0-20220722155237-a158d28d115b
 	golang.org/x/oauth2 v0.0.0-20210113205817-d3ed898aa8a3 // indirect
+	golang.org/x/vuln v0.0.0-20220902211423-27dd78d2ca39 // indirect
 	google.golang.org/api v0.38.0
 	google.golang.org/genproto v0.0.0-20210203152818-3206188e46ba // indirect
 	google.golang.org/grpc v1.35.0 // indirect
