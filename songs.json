@@ -292,5 +292,75 @@
       "spotify": "https://open.spotify.com/track/5DBe1ryseELPtTEQgGykxA?si=7de364733fa54969",
       "apple": "https://music.apple.com/jp/album/reborn/1598308624?i=1598308867"
     }
+  },
+  {
+    "title" : "One Life",
+    "link": {
+      "spotify": "https://open.spotify.com/track/5N8VLHHJdERMwu2VaWRDG8?si=8b355c0fd5f9489b",
+      "apple": "https://music.apple.com/jp/album/one-life/1633608773?i=1633608774"
+    }
+  },
+  {
+    "title" : "BY MY SIDE",
+    "link": {
+      "spotify": "https://open.spotify.com/track/2nb5aFzG2SjPt9dy1FaY85?si=3bbd1dc3a7d34ba8",
+      "apple": "https://music.apple.com/jp/album/by-my-side/1633608773?i=1633608775"
+    }
+  },
+  {
+    "title" : "New Day Rising",
+    "link": {
+      "spotify": "https://open.spotify.com/track/6ZF6vGbmcmaaBumoawH4UH?si=7442a63182534e2d",
+      "apple": "https://music.apple.com/jp/album/new-day-rising/1633608773?i=1633608776"
+    }
+  },
+  {
+    "title" : "D.T.F.",
+    "link": {
+      "spotify": "https://open.spotify.com/track/2jOia3TwM2MLCcvLQNLexl?si=b46317797f124bb7",
+      "apple": "https://music.apple.com/jp/album/d-t-f/1633608773?i=1633608778"
+    }
+  },
+  {
+    "title" : "夜を抜け出して",
+    "link": {
+      "spotify": "https://open.spotify.com/track/0doep5QC36WEM9xyQF3vBj?si=cfa6177ccff540c7",
+      "apple": "https://music.apple.com/jp/album/%E5%A4%9C%E3%82%92%E6%8A%9C%E3%81%91%E5%87%BA%E3%81%97%E3%81%A6/1633608773?i=1633608779"
+    }
+  },
+  {
+    "title" : "雨のち晴れ",
+    "link": {
+      "spotify": "https://open.spotify.com/track/4NvIqEmvdQPyJlF30MRsRC?si=0695c56d61f247f6",
+      "apple": "https://music.apple.com/jp/album/%E9%9B%A8%E3%81%AE%E3%81%A1%E6%99%B4%E3%82%8C/1633608773?i=1633608780"
+    }
+  },
+  {
+    "title" : "夕日の後の夜に(H.O.H. REMIX)",
+    "link": {
+      "spotify": "https://open.spotify.com/track/7gkZZ2kJgwkZFN0NfV4naG?si=0c14c68560cf4999",
+      "apple": "https://music.apple.com/jp/album/%E5%A4%95%E6%97%A5%E3%81%AE%E5%BE%8C%E3%81%AE%E5%A4%9C%E3%81%AB-h-o-h-remix/1632178608?i=1632178613"
+    }
+  },
+  {
+    "title" : "Accent",
+    "link": {
+      "spotify": "https://open.spotify.com/track/4Aoe0mQoqJjHryHHr7QwG4?si=e5e5415f644b4c62",
+      "apple": "https://music.apple.com/jp/album/accent/1657072512?i=1657072513"
+    }
+  },
+  {
+    "title" : "風を抱きしめて",
+    "link": {
+      "spotify": "https://open.spotify.com/track/36hMyNxsETe61fZdMMlAMC?si=c88c61bffaad4a73",
+      "apple": "https://music.apple.com/jp/album/%E9%A2%A8%E3%82%92%E6%8A%B1%E3%81%8D%E3%81%97%E3%82%81%E3%81%A6/1657072512?i=1657072514"
+    }
+  },
+  {
+    "title" : "Make Up",
+    "link": {
+      "spotify": "https://open.spotify.com/track/0l082cGALtz0593VLHOCKm?si=5b3acf9d0de64e38",
+      "apple": "https://music.apple.com/jp/album/make-up/1657072512?i=1657072515"
+    }
   }
 ]
