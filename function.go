@@ -741,7 +741,7 @@ func lastMain() {
 	// tweet
 	v := url.Values{}
 	v.Add("media_ids", media.MediaIDString)
-	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト #BOLTデマス", textTw)
+	tweetText := fmt.Sprintf("%s\n#内藤るな #白浜あや #高井千帆 #青山菜花\n#BOLT #ボルト #スタプラ #TheLAST", textTw)
 
 	tweet, err := api.PostTweet(tweetText, v)
 
