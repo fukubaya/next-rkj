@@ -39,20 +39,21 @@ import (
 
 const (
 	location                   = "Asia/Tokyo"
-	fontFilePath               = "font/mplus-1p-bold.ttf"
 	youtubeChannelId           = "UCNsGYZjlivJYZdbxqrR-26g"
 	uploadImageRetryCount  int = 3
 	uploadImageRetrySecond int = 30
 )
 
 var (
-	imageList  []ImageInfo
-	songsList  []SongInfo
-	eventsList []EventInfo
-	tour       TourInfo
-	last       LastInfo
-	colorList  = [...]color.RGBA{{215, 46, 42, 255}, {151, 95, 162, 255}, {254, 246, 155, 255}, {11, 83, 148, 255}}
-	fontData   *truetype.Font
+	root         = os.Getenv("ROOT_PATH")
+	fontFilePath = fmt.Sprintf("%s/font/mplus-1p-bold.ttf", root)
+	imageList    []ImageInfo
+	songsList    []SongInfo
+	eventsList   []EventInfo
+	tour         TourInfo
+	last         LastInfo
+	colorList    = [...]color.RGBA{{215, 46, 42, 255}, {151, 95, 162, 255}, {254, 246, 155, 255}, {11, 83, 148, 255}}
+	fontData     *truetype.Font
 )
 
 // Point struct
@@ -349,7 +350,7 @@ func initRand() {
 }
 
 func loadImageList() {
-	f, _ := os.Open("image.json")
+	f, _ := os.Open(fmt.Sprintf("%s/image.json", root))
 	defer f.Close()
 
 	dec := json.NewDecoder(f)
@@ -357,7 +358,7 @@ func loadImageList() {
 }
 
 func loadSongsList() {
-	f, _ := os.Open("songs.json")
+	f, _ := os.Open(fmt.Sprintf("%s/songs.json", root))
 	defer f.Close()
 
 	dec := json.NewDecoder(f)
@@ -365,7 +366,7 @@ func loadSongsList() {
 }
 
 func loadEventsList() {
-	f, _ := os.Open("events.json")
+	f, _ := os.Open(fmt.Sprintf("%s/events.json", root))
 	defer f.Close()
 
 	dec := json.NewDecoder(f)
@@ -376,7 +377,7 @@ func loadEventsList() {
 }
 
 func loadTourEventsList() {
-	f, _ := os.Open("tour_events.json")
+	f, _ := os.Open(fmt.Sprintf("%s/tour_events.json", root))
 	defer f.Close()
 
 	dec := json.NewDecoder(f)
@@ -387,7 +388,7 @@ func loadTourEventsList() {
 }
 
 func loadLastEvent() {
-	f, _ := os.Open("last_event.json")
+	f, _ := os.Open(fmt.Sprintf("%s/last_event.json", root))
 	defer f.Close()
 
 	dec := json.NewDecoder(f)
@@ -462,7 +463,7 @@ func getTwitterAPI() *anaconda.TwitterApi {
 
 func generateTodayImage(imgInfo ImageInfo, text string) image.Image {
 	// load image
-	img := loadImg(imgInfo.Path)
+	img := loadImg(fmt.Sprintf("%s/", root) + imgInfo.Path)
 	out := image.NewRGBA(img.Bounds())
 	draw.Draw(out, out.Bounds(), img, image.Point{0, 0}, draw.Over)
 
