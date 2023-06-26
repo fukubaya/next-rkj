@@ -30,6 +30,9 @@ import (
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/golang/freetype/truetype"
+	"github.com/michimani/gotwi"
+	"github.com/michimani/gotwi/tweet/managetweet"
+	"github.com/michimani/gotwi/tweet/managetweet/types"
 	"golang.org/x/image/font"
 	"golang.org/x/image/math/fixed"
 
@@ -461,6 +464,19 @@ func getTwitterAPI() *anaconda.TwitterApi {
 		os.Getenv("CONSUMER_SECRET"))
 }
 
+func getTwitterAPIv2() *gotwi.Client {
+	c, err := gotwi.NewClient(&gotwi.NewClientInput{
+		AuthenticationMethod: gotwi.AuthenMethodOAuth1UserContext,
+		OAuthToken:           os.Getenv("ACCESS_TOKEN"),
+		OAuthTokenSecret:     os.Getenv("ACCESS_TOKEN_SECRET"),
+	})
+	if err != nil {
+		log.Fatalln(err)
+	}
+	c.SetAccessToken(os.Getenv("ACCESS_TOKEN"))
+	return c
+}
+
 func generateTodayImage(imgInfo ImageInfo, text string) image.Image {
 	// load image
 	img := loadImg(fmt.Sprintf("%s/", root) + imgInfo.Path)
@@ -599,17 +615,19 @@ func songMain() {
 		now.Hour(), song.Title, song.Link.Apple, song.Link.Spotify)
 
 	// api
-	api := getTwitterAPI()
+	api := getTwitterAPIv2()
 
 	// tweet
-	v := url.Values{}
-	tweet, err := api.PostTweet(tweetText, v)
+	res, err := managetweet.Create(context.Background(), api, &types.CreateInput{
+		Text: gotwi.String(tweetText),
+	})
 
 	if err != nil {
+		log.Println(fmt.Sprintf("err=%+v", err))
 		log.Fatalln(err)
 	}
 
-	log.Println(tweet.Text)
+	log.Println(res.Data.Text)
 }
 
 // YouTube channel
